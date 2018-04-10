@@ -1,0 +1,43 @@
+snippet exp "Export nodejs module" !b
+module.exports = ${1:module};
+endsnippet
+
+snippet fun "Standard js function" !b
+function ${1:name} (${2:args}) {
+  $0
+};
+endsnippet
+
+snippet cl "console.log" !b
+console.log($1);
+endsnippet
+
+snippet func "Standard javascript function" !b
+var ${1:name} = function (${2:args}) {
+  $0
+};
+endsnippet
+
+snippet str "use strict snippet" !b
+'use strict';
+endsnippet
+
+snippet mod "Standard wrap" !b
+;(function ($1) {
+  'use strict';
+
+  $0
+})($2);
+endsnippet
+
+snippet for "for standard loop" !b
+for (var ${1:i} = 0; i < ${2:limit}; ${3:i++}) {
+    $0
+}
+endsnippet
+
+snippet fori "for in lopp" !b
+for (var ${1:key} in ${2:object}) {
+    $0
+}
+endsnippet

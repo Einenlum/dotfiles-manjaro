@@ -1,0 +1,35 @@
+snippet col
+/**
+ * @ORM\Column
+ */
+private $${1:name};
+endsnippet
+
+snippet mto
+/**
+ * @ORM\ManyToOne(targetEntity="${1:Target}", inversedBy="${3:`!v substitute(substitute(expand('%:t:r'), '\v^(.)', '\l\1', ''), '\v(\u)', '_\l\1', 'g')`}s")
+ */
+private $${1/\w+\s*/\l$0/};
+endsnippet
+
+snippet otm
+/**
+ * @ORM\OneToMany(targetEntity="${1:Target}", mappedBy="${3:`!v substitute(substitute(expand('%:t:r'), '\v^(.)', '\l\1', ''), '\v(\u)', '_\l\1', 'g')`}")
+ */
+private $${1/\w+\s*/\l$0/}s;
+endsnippet
+
+snippet mtm
+/**
+ * @ORM\ManyToMany(targetEntity="${1:Target}", ${2:inversed}By="${3:`!v substitute(substitute(expand('%:t:r'), '\v^(.)', '\l\1', ''), '\v(\u)', '_\l\1', 'g')`}s")
+ * @ORM\JoinTable(name="${3/\w+\s*/\l$0/}_${1/\w+\s*/\l$0/}s")
+ */
+private $${1/\w+\s*/\l$0/}s;
+endsnippet
+
+snippet oto
+/**
+ * @ORM\OneToOne(targetEntity="${1:Target}", ${2:inversed}By="${3:`!v substitute(substitute(expand('%:t:r'), '\v^(.)', '\l\1', ''), '\v(\u)', '_\l\1', 'g')`}s")
+ */
+private $${1/\w+\s*/\l$0/};
+endsnippet

@@ -1,0 +1,22 @@
+snippet feature 
+Feature: ${1:Name}
+	${2:Description}
+
+	Background:
+		${3:background}
+
+	${4}
+endsnippet
+
+snippet scenario 
+Scenario: ${1:Name}
+	${2}
+endsnippet
+
+snippet outline 
+Scenario: ${1:Name}
+	${2}
+
+	Examples:
+		| ${3:title} |
+endsnippet

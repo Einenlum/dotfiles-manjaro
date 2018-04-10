@@ -1,0 +1,25 @@
+snippet if
+{% if ${1} %}
+    ${2}
+{% endif %}
+endsnippet
+
+snippet ifelse
+{% if ${1} %}
+    ${2}
+{% else %}
+    ${3}
+{% endif %}
+endsnippet
+
+snippet for
+{% for ${1} in ${2} %}
+    ${3}
+{% endfor %}
+endsnippet
+
+snippet forif
+{% for ${1} in ${2} if $1${3} %}
+    ${4}
+{% endfor %}
+endsnippet

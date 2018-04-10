@@ -1,0 +1,291 @@
+source ~/.vimrc.bepo
+
+filetype off " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Bundle 'gmarik/Vundle.vim'
+
+" Keep Bundle commands between vundle#begin/end.
+" plugin on GitHub repo
+Bundle 'tpope/vim-fugitive'
+" Bundle from http://vim-scripts.org/vim/scripts.html
+Bundle 'L9'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'godlygeek/tabular.git'
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'jordwalke/flatlandia'
+Bundle 'sjbach/lusty.git'
+Bundle 'SirVer/ultisnips.git'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'arnaud-lb/vim-php-namespace.git'
+Bundle 'evidens/vim-twig.git'
+Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'bling/vim-bufferline'
+Bundle 'stephpy/vim-yaml.git'
+Bundle "monochromegane/unite-yaml"
+Bundle 'Einenlum/yaml-revealer'
+Bundle 'groenewege/vim-less'
+Bundle 'henrik/vim-yaml-flattener'
+Bundle 'Yggdroot/indentLine'
+Bundle 'joonty/vdebug'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'Rename'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'Herzult/phpspec-vim.git'
+Bundle 'karlbright/qfdo.vim'
+Bundle 'tpope/vim-abolish'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+set exrc
+set nocompatible
+syntax enable 
+set hidden
+set wildmenu
+set wildmode=list:longest
+set wildignorecase " :e is now case insensitive
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set backupdir =~/.vim/backup
+set wrap
+set scrolloff=5
+set title
+set visualbell
+set showmode
+set number
+set expandtab
+set shiftwidth=4
+set ruler
+colorscheme gruvbox
+set background=dark
+let mapleader = ","
+set t_Co=256
+let g:Powerline_symbols='fancy'
+nnoremap <F6> :!ctags -f tags src spec features&<CR>
+nnoremap <F7> :!ctags -f vendor.tags vendor&<CR>
+set clipboard=unnamedplus " Allow to cp/p from clipboard
+
+" easy copy-paste clipboard
+vmap <Leader>y "+y<CR>
+nmap <Leader>p "+p<CR>
+
+" buffer management
+map <Leader>n :bn<cr>
+map <Leader>p :bp<cr>
+
+" Easy tags jump
+set tags+=vendor.tags
+noremap <Leader>t "zyiw:exe ":tj ".@z.""<CR>
+
+" Clear search highlight
+nmap <silent> <leader>/ :let @/=""<cr>
+
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1
+nmap <Leader>m <Plug>(easymotion-s)
+" TS motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>s <Plug>(easymotion-k)
+
+
+" mkdir directory automatically
+autocmd BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
+function! <SID>MkdirsIfNotExists(directory)
+if(!isdirectory(a:directory))
+    call mkdir(a:directory, 'p')
+endif
+endfunction
+
+" vim-php-namespace
+inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+noremap <Leader>u :call PhpInsertUse()<CR>
+map <buffer> <leader>bns :call PhpExpandClass()<CR>
+
+" ctrlp
+" unlet g:ctrlp_custom_ignore
+set wildignore+=*/cache/**,web/bundles/**,*/vendor/**
+let g:ctrlp_custom_ignore = { 'dir': '\v([\/]\.(git|hg|svn))|([\/]node_modules)|([\/]compiled)|([\/]dist)|([\/]app/lib)|([\/]bower_components)|([\/]doc)$' }
+" use open dir as root
+let g:ctrlp_working_path_mode = 0
+" speed up Ctrl P
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+set grepprg=ag\ --nogroup\ --nocolor
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsListSnippets = '<c-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" View differently normal spaces and non breakable spaces
+" set list listchars=nbsp:¬
+
+" Tabularize
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>aa :Tabularize /=><CR>
+vmap <Leader>aa :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /: \zs<CR>
+vmap <Leader>a: :Tabularize /: \zs<CR>
+nmap <Leader>a, :Tabularize /, \zs<CR>
+vmap <Leader>a, :Tabularize /, \zs<CR>
+
+" easy navigation between words
+nnoremap <C-t> 5j
+vnoremap <C-t> 5j
+nnoremap <C-s> 5k
+vnoremap <C-s> 5k
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+" set how far Ctrl-D and Ctrl-U scroll
+set scroll=6
+
+" buffer close
+nmap <Leader>d :BD<CR>
+
+" list buffers
+nmap <leader>b :ls<CR>:e#
+
+" Function to close all buffers not visible
+function! CloseHiddenBuffers()
+let visible = {}
+" for every tab
+for t in range(1, tabpagenr('$'))
+    " and for every window in it
+    for b in tabpagebuflist(t)
+        " this buffer is visible
+        let visible[b] = 1 
+    endfor
+endfor
+
+" for every buffer number
+for b in range(1, bufnr('$'))
+   " if b is a number of invisible buffer, we remove it
+   if bufexists(b) && !has_key(visible, b)
+       execute 'bwipeout' b
+   endif
+endfor
+endfunction
+
+function! CloseHiddenBuffersAndRefreshCtrlP()
+:call CloseHiddenBuffers()
+:CtrlPClearCache
+endfunction
+" alias it
+:ca chb :call CloseHiddenBuffersAndRefreshCtrlP()
+nmap <leader>chb :chb<CR>
+
+" open new tab
+nmap <leader>e :tabnew<CR>
+" next tab
+nmap <leader>en :tabnext<CR>
+" previous tab
+nmap <leader>ep :tabprevious<CR>
+" close tab
+nmap <leader>ec :tabclose<CR>
+
+" rm file
+nmap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
+
+" :q binding
+nmap <Leader>q :q<CR>
+
+" highlight lines and columns
+set cursorline
+set cursorcolumn
+
+" easy save
+nmap <Leader>w :w<CR>
+
+" yml autoindent
+set autoindent sw=4 ts=4 expandtab
+setlocal autoindent sw=4 ts=4 expandtab
+setglobal autoindent sw=4 ts=4 expandtab
+
+autocmd BufNewFile,BufRead *.njs set filetype=javascript
+
+" file is large from 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile 
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+function LargeFile()
+    " no syntax highlighting etc
+    set eventignore+=FileType
+    " save memory when other file is viewed
+    setlocal bufhidden=unload
+    " is read-only (write with :w new_filename)
+    setlocal buftype=nowrite
+    " no undo possible
+    setlocal undolevels=-1
+    " display message
+    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Close vim if only nerdtree open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Fix Ctrl-C as esc
+map <C-c> <Esc>
+ino <C-C> <Esc>
+imap <C-C> <Esc>
+
+" Change abolish coerce
+nnoremap f <nop>
+xnoremap f <nop>
+nmap fc  <Plug>Coerce
+
+autocmd FileType php set keywordprg=~/.bin/phpdoc.sh
+
+" Remove this f**king conceal of json quotes!
+let g:vim_json_syntax_conceal = 0
+let g:indentLine_noConcealCursor=""
+set conceallevel=0
+au FileType * setl conceallevel=0 
+let  g:indentLine_conceallevel = 0

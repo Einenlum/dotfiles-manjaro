@@ -1,0 +1,13 @@
+tags
+vendor.tags
+Guardfile
+*.swp
+*.swo
+*~
+*.log
+node_modules/*
+app/cache/*
+app/logs/*
+app/config/parameters.yml
+behat.yml
+.vimrc

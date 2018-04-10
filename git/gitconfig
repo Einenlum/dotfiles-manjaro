@@ -1,0 +1,8 @@
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+[user]
+	email = yann.rabiller@gmail.com
+	name = Einenlum

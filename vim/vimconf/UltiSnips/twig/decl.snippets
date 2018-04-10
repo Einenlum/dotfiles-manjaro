@@ -1,0 +1,23 @@
+snippet {{
+{{ ${1} }}
+endsnippet
+
+snippet {%
+{% ${1} %}
+endsnippet
+
+snippet {#
+{# ${1} #}
+endsnippet
+
+snippet set
+{% set ${1} = ${2} %}
+endsnippet
+
+snippet include
+{% include '${1:template}.${2:html.twig}' %}
+endsnippet
+
+snippet extends
+{% extends '${1:template}.${2:html.twig}' %}
+endsnippet

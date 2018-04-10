@@ -1,0 +1,34 @@
+snippet csg
+${1:private} $${2}s;
+
+public function get${2/\w+\s*/\u$0/}s()
+{
+    return $this->$2s;
+}
+
+public function set${2/\w+\s*/\u$0/}s($$2s)
+{
+    $this->$2s = $$2s;
+
+	return $this;
+}
+
+public function add${2/\w+\s*/\u$0/}($$2)
+{
+    $this->$2s->add($$2);
+
+	return $this;
+}
+
+public function has${2/\w+\s*/\u$0/}($$2)
+{
+    return $this->$2s->contains($$2);
+}
+
+public function remove${2/\w+\s*/\u$0/}($$2)
+{
+    $this->$2s->removeElement($$2);
+
+	return $this;
+}
+endsnippet

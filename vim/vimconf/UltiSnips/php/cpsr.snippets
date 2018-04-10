@@ -1,0 +1,32 @@
+snippet cpsr "PSR4 class"
+<?php
+
+namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+
+class ${2:`!v expand('%:t:r', 'myClass')`}
+{
+    ${1}
+}
+endsnippet
+
+snippet ipsr "PSR4 interface"
+<?php
+
+namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+
+interface ${2:`!v expand('%:t:r', 'myInterface')`}
+{
+    ${1}
+}
+endsnippet
+
+snippet tpsr "PSR4 trait"
+<?php
+
+namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+
+trait ${2:`!v expand('%:t:r', 'myTrait')`}
+{
+    ${1}
+}
+endsnippet
