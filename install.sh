@@ -50,4 +50,4 @@ vim +PluginInstall +qall
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
-npm install -g tldr
+npm install -g tldr fkill-cli
