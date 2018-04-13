@@ -24,6 +24,7 @@ sudo rm -Rf ~/.zshrc
 sudo rm -Rf ~/.gitconfig
 sudo rm -Rf ~/.i3
 sudo rm -Rf ~/.i3status.conf
+sudo rm -Rf ~/.npm-global
 
 dotfiles_dir=~/dotfiles
 
@@ -44,3 +45,7 @@ mkdir -p ~/.vim/backup
 rm -Rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+# npm global
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
