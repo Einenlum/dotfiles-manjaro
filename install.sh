@@ -49,3 +49,5 @@ vim +PluginInstall +qall
 # npm global
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
+
+npm install -g tldr
