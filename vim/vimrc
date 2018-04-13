@@ -183,7 +183,7 @@ endfunction
 set scroll=6
 
 " buffer close
-nmap <Leader>d :BD<CR>
+nmap <Leader>d :bd<CR>
 
 " list buffers
 nmap <leader>b :ls<CR>:e#
