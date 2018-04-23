@@ -2,50 +2,50 @@ source ~/.vimrc.bepo
 
 filetype off " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Bundle 'gmarik/Vundle.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Keep Bundle commands between vundle#begin/end.
+call plug#begin()
+" let Vundle manage Vundle, required
+Plug 'gmarik/Vundle.vim'
+
+" Keep Plug commands between vundle#begin/end.
 " plugin on GitHub repo
-Bundle 'tpope/vim-fugitive'
-" Bundle from http://vim-scripts.org/vim/scripts.html
-Bundle 'L9'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'majutsushi/tagbar.git'
-Bundle 'godlygeek/tabular.git'
-Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'jordwalke/flatlandia'
-Bundle 'sjbach/lusty.git'
-Bundle 'SirVer/ultisnips.git'
-Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'arnaud-lb/vim-php-namespace.git'
-Bundle 'evidens/vim-twig.git'
-Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'bling/vim-bufferline'
-Bundle 'stephpy/vim-yaml.git'
-Bundle "monochromegane/unite-yaml"
-Bundle 'Einenlum/yaml-revealer'
-Bundle 'groenewege/vim-less'
-Bundle 'henrik/vim-yaml-flattener'
-Bundle 'Yggdroot/indentLine'
-Bundle 'joonty/vdebug'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'Rename'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'Herzult/phpspec-vim.git'
-Bundle 'karlbright/qfdo.vim'
-Bundle 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+" Plug from http://vim-scripts.org/vim/scripts.html
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'godlygeek/tabular'
+Plug 'powerline/powerline'
+Plug 'jordwalke/flatlandia'
+Plug 'sjbach/lusty'
+Plug 'SirVer/ultisnips'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'evidens/vim-twig'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'bling/vim-bufferline'
+Plug 'stephpy/vim-yaml'
+Plug 'monochromegane/unite-yaml'
+Plug 'Einenlum/yaml-revealer'
+Plug 'groenewege/vim-less'
+Plug 'henrik/vim-yaml-flattener'
+Plug 'Yggdroot/indentLine'
+Plug 'joonty/vdebug'
+Plug 'scrooloose/nerdtree'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'karlbright/qfdo.vim'
+Plug 'tpope/vim-abolish'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+call plug#end()            " required
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -58,7 +58,6 @@ filetype plugin indent on    " required
 
 set exrc
 set nocompatible
-syntax enable 
 set hidden
 set wildmenu
 set wildmode=list:longest
@@ -289,3 +288,15 @@ let g:indentLine_noConcealCursor=""
 set conceallevel=0
 au FileType * setl conceallevel=0 
 let  g:indentLine_conceallevel = 0
+
+
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
