@@ -25,6 +25,7 @@ sudo rm -Rf ~/.gitconfig
 sudo rm -Rf ~/.i3
 sudo rm -Rf ~/.i3status.conf
 sudo rm -Rf ~/.npm-global
+sudo rm -f ~/.eslintrc
 
 dotfiles_dir=~/dotfiles
 
@@ -37,13 +38,11 @@ ln -sf $dotfiles_dir/shell/agignore ~/.agignore
 ln -sf $dotfiles_dir/git/gitconfig ~/.gitconfig
 ln -sf $dotfiles_dir/git/gitignore ~/.gitignore
 ln -sf $dotfiles_dir/tags/ctags ~/ctags
+ln -sf $dotfiles_dir/prog/eslintrc.js ~/.eslintrc.js
 mkdir ~/.i3 && ln -sf $dotfiles_dir/i3/config ~/.i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
 
-mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/backup
-rm -Rf ~/.vim/bundle/Vundle.vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # npm global
@@ -51,3 +50,4 @@ mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
 npm install -g tldr fkill-cli
+npm install -g eslint-plugin-react eslint@4.x babel-eslint@8
