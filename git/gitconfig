@@ -6,3 +6,5 @@
 [user]
 	email = yann.rabiller@gmail.com
 	name = Einenlum
+[push]
+	default = current
