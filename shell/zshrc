@@ -88,6 +88,12 @@ alias gc="git commit -m"
 alias gw="git add -A && git commit -m \"WIP\""
 alias gw="git add -A && git commit -m \"[ci skip] WIP\""
 alias gaw="git add -A && git commit --amend -m \"[ci skip] WIP\""
+alias dcc="docker-compose"
+alias dcu="docker-compose up -d"
+alias dcs="docker-compose stop"
+alias dcb="docker-compose build"
+alias dce="docker-compose exec"
+alias dog='highlight -O ansi'
 
 # allow ctrl-s
 stty -ixon
