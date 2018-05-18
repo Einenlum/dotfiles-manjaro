@@ -95,6 +95,7 @@ alias dco="docker-compose stop"
 alias dca="docker-compose start"
 alias dcb="docker-compose build"
 alias dce="docker-compose exec"
+alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
 
 # allow ctrl-s
