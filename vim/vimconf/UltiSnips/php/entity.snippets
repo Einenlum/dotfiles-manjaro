@@ -1,7 +1,7 @@
 snippet ent "PSR0 class"
 <?php
 
-namespace ${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+namespace ${1:`!v PhpNamespaceGet()`};
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
