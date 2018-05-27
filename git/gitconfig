@@ -8,3 +8,5 @@
 	name = Einenlum
 [push]
 	default = current
+[core]
+    excludesfile = ~/.gitignore
