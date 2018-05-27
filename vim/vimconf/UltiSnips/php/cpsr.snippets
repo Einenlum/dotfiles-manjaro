@@ -1,32 +1,29 @@
-snippet cpsr "PSR4 class"
+snippet ipsr "Interface declaration template" !b
 <?php
 
-namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+namespace ${1:`!v PhpNamespaceGet()`};
 
-class ${2:`!v expand('%:t:r', 'myClass')`}
+interface ${1:`!v expand("%:t:r")`}
 {
-    ${1}
 }
 endsnippet
 
-snippet ipsr "PSR4 interface"
+snippet cpsr "Class declaration template" !b
 <?php
 
-namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+namespace ${1:`!v PhpNamespaceGet()`};
 
-interface ${2:`!v expand('%:t:r', 'myInterface')`}
+class ${1:`!v expand("%:t:r")`}
 {
-    ${1}
 }
 endsnippet
 
-snippet tpsr "PSR4 trait"
+snippet tpsr "Trait declaration template" !b
 <?php
 
-namespace `!v exists("g:psr_4_prefix") ? g:psr_4_prefix : ""`${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+namespace ${1:`!v PhpNamespaceGet()`};
 
-trait ${2:`!v expand('%:t:r', 'myTrait')`}
+trait ${1:`!v expand("%:t:r")`}
 {
-    ${1}
 }
 endsnippet

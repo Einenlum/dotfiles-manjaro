@@ -34,7 +34,6 @@ Plug 'Einenlum/yaml-revealer'
 Plug 'groenewege/vim-less'
 Plug 'henrik/vim-yaml-flattener'
 Plug 'Yggdroot/indentLine'
-Plug 'joonty/vdebug'
 Plug 'scrooloose/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'karlbright/qfdo.vim'
@@ -47,6 +46,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'vim-scripts/Rename'
+Plug 'dantleech/vim-phpnamespace'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
