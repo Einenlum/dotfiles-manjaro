@@ -39,6 +39,7 @@ ln -sf $dotfiles_dir/git/gitconfig ~/.gitconfig
 ln -sf $dotfiles_dir/git/gitignore ~/.gitignore
 ln -sf $dotfiles_dir/tags/ctags ~/.ctags
 ln -sf $dotfiles_dir/prog/eslintrc.js ~/.eslintrc.js
+ln -sf $dotfiles_dir/prog/prettierrc ~/.prettierrc
 mkdir ~/.i3 && ln -sf $dotfiles_dir/i3/config ~/.i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
 
