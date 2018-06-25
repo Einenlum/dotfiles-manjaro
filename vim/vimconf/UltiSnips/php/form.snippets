@@ -1,6 +1,8 @@
 snippet form "PSR0 class"
 <?php
 
+declare(strict_types=1);
+
 namespace ${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
 
 use Symfony\Component\Form\AbstractType;
@@ -25,11 +27,6 @@ class ${2:`!v expand("%:t:r")`} extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-    }
-
-    public function getName()
-    {
-        return '${1}';
     }
 }
 endsnippet
