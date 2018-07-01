@@ -49,6 +49,8 @@ Plug 'dantleech/vim-phpnamespace'
 Plug 'jacoborus/tender.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'danilo-augusto/vim-afterglow'
+Plug 'AlessandroYorba/Alduin'
+Plug 'vim-scripts/AfterColors.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -84,7 +86,7 @@ set number
 set expandtab
 set shiftwidth=4
 set ruler
-colorscheme gruvbox
+colorscheme alduin
 set background=dark
 let mapleader = ","
 set t_Co=256
