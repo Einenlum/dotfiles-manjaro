@@ -91,7 +91,7 @@ set background=dark
 let mapleader = ","
 set t_Co=256
 let g:Powerline_symbols='fancy'
-nnoremap <F6> :!ctags -f tags src spec features&<CR>
+nnoremap <F6> :!ctags -f tags src spec features tests&<CR>
 nnoremap <F7> :!ctags -f vendor.tags vendor&<CR>
 set clipboard=unnamedplus " Allow to cp/p from clipboard
 
