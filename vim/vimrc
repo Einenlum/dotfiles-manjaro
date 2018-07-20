@@ -51,6 +51,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'AlessandroYorba/Alduin'
 Plug 'vim-scripts/AfterColors.vim'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -316,3 +318,4 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 autocmd FileType js setlocal shiftwidth=2 tabstop=2
 autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
+
