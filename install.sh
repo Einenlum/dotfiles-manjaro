@@ -4,7 +4,20 @@
 sudo pacman -S --needed --noconfirm firefox chromium
 
 # Dev tools
-sudo pacman -S --needed --noconfirm gvim zsh tmux ctags gnome-terminal the_silver_searcher nodejs npm ruby yarn gcc highlight
+sudo pacman -S --needed --noconfirm \
+    gvim \
+    zsh \
+    tmux \
+    ctags \
+    gnome-terminal \
+    the_silver_searcher \
+    nodejs \
+    npm \
+    ruby \
+    yarn \
+    gcc \
+    highlight \
+    bat
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo groupadd docker
 sudo usermod -aG docker $USER
