@@ -3,7 +3,7 @@ snippet form "PSR0 class"
 
 declare(strict_types=1);
 
-namespace ${3:`!v substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\', 'g')`};
+namespace ${1:`!v PhpNamespaceGet()`};
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
