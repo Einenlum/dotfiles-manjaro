@@ -99,6 +99,7 @@ alias dcb="docker-compose build"
 alias dce="docker-compose exec"
 alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
+alias bat='bat --paging=never --style=plain'
 
 # allow ctrl-s
 stty -ixon
