@@ -1,5 +1,13 @@
 {
     "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
+    "semi": true,
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": "*.php",
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
 }

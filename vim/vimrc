@@ -29,7 +29,6 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'bling/vim-bufferline'
 Plug 'stephpy/vim-yaml'
 Plug 'monochromegane/unite-yaml'
-" Plug 'Einenlum/yaml-revealer'
 Plug 'groenewege/vim-less'
 Plug 'henrik/vim-yaml-flattener'
 Plug 'Yggdroot/indentLine'
@@ -313,9 +312,22 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_lint_on_text_changed = 'never'
 
 nmap <Leader>m <Plug>(Prettier)
-let g:prettier#autoformat = 0
+let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 autocmd FileType js setlocal shiftwidth=2 tabstop=2
 autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
 
+" Prettier for PHP
+" function PrettierPhpCursor()
+"   let save_pos = getpos(".")
+"   %! prettier --stdin --parser=php
+"   call setpos('.', save_pos)
+" endfunction
+" " define custom command
+" command PrettierPhp call PrettierPhpCursor()
+" " format on save
+" autocmd BufwritePre *.php PrettierPhp
+
+" fix syntax hl for ejs files
+au BufNewFile,BufRead *.ejs set filetype=html
