@@ -12,6 +12,9 @@ call plug#begin()
 " let Vundle manage Vundle, required
 Plug 'gmarik/Vundle.vim'
 
+" test line
+Plug 'itchyny/lightline.vim'
+
 " Keep Plug commands between vundle#begin/end.
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
@@ -331,3 +334,9 @@ autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
 
 " fix syntax hl for ejs files
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" Lightline configuration
+set noshowmode " we remove the -- INSERTION -- which is useless now because of lightline
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ }
