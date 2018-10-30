@@ -28,7 +28,6 @@ Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 Plug 'phpactor/ncm2-phpactor'
 
 Plug 'tpope/vim-fugitive' " add git integration
-Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar' " F8 displays functions and variables (thx to ctags)
 Plug 'godlygeek/tabular'
 Plug 'jordwalke/flatlandia'
@@ -145,19 +144,6 @@ inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
 noremap <Leader>u :call PhpInsertUse()<CR>
 map <buffer> <leader>bns :call PhpExpandClass()<CR>
 
-" ctrlp
-" unlet g:ctrlp_custom_ignore
-set wildignore+=*/cache/**,web/bundles/**,*/vendor/**
-let g:ctrlp_custom_ignore = { 'dir': '\v([\/]\.(git|hg|svn))|([\/]node_modules)|([\/]compiled)|([\/]dist)|([\/]app/lib)|([\/]bower_components)|([\/]doc)$' }
-" use open dir as root
-let g:ctrlp_working_path_mode = 0
-" speed up Ctrl P
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-set grepprg=ag\ --nogroup\ --nocolor
-
 " Ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsListSnippets = '<c-tab>'
@@ -229,12 +215,7 @@ for b in range(1, bufnr('$'))
 endfor
 endfunction
 
-function! CloseHiddenBuffersAndRefreshCtrlP()
-:call CloseHiddenBuffers()
-:CtrlPClearCache
-endfunction
-" alias it
-:ca chb :call CloseHiddenBuffersAndRefreshCtrlP()
+:ca chb :call CloseHiddenBuffers()
 nmap <leader>chb :chb<CR>
 
 " open new tab
@@ -368,3 +349,6 @@ set completeopt=noinsert,menuone,noselect
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+nmap <C-p> <Esc>:Files<CR>
+nmap <Leader>f :Find 
