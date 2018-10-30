@@ -22,7 +22,7 @@ sudo pacman -S --needed --noconfirm \
     ripgrep
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
-sudo yaourt ruby-neovim --no-confirm
+yaourt ruby-neovim # need to find a way to automate this (with no confirm)
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
@@ -45,6 +45,8 @@ sudo rm -Rf ~/.npm-global
 sudo rm -f ~/.eslintrc
 
 dotfiles_dir=~/dotfiles
+
+mkdir -p ~/.config/nvim
 
 ln -sf $dotfiles_dir/vim/vimconf ~/.vim
 ln -sf $dotfiles_dir/vim/vimrc ~/.vimrc
