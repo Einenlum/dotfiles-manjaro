@@ -10,15 +10,19 @@ sudo pacman -S --needed --noconfirm \
     tmux \
     ctags \
     gnome-terminal \
-    the_silver_searcher \
     nodejs \
     npm \
     ruby \
     yarn \
     gcc \
     highlight \
-    bat
+    bat \
+    yaourt \
+    neovim \
+    ripgrep
 sudo pacman -S --needed --noconfirm docker docker-compose
+sudo pacman -S python2-pip
+sudo yaourt ruby-neovim --no-confirm
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
@@ -44,10 +48,10 @@ dotfiles_dir=~/dotfiles
 
 ln -sf $dotfiles_dir/vim/vimconf ~/.vim
 ln -sf $dotfiles_dir/vim/vimrc ~/.vimrc
+ln -sf $dotfiles_dir/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf $dotfiles_dir/vim/vimrc.bepo ~/.vimrc.bepo
 ln -sf $dotfiles_dir/shell/tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/shell/zshrc ~/.zshrc
-ln -sf $dotfiles_dir/shell/agignore ~/.agignore
 ln -sf $dotfiles_dir/git/gitconfig ~/.gitconfig
 ln -sf $dotfiles_dir/git/gitignore ~/.gitignore
 ln -sf $dotfiles_dir/tags/ctags ~/.ctags
