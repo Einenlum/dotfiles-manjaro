@@ -34,7 +34,6 @@ Plug 'henrik/vim-yaml-flattener'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'karlbright/qfdo.vim'
 Plug 'tpope/vim-abolish'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -52,6 +51,7 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
+Plug 'moll/vim-bbye'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -191,7 +191,7 @@ endfunction
 set scroll=6
 
 " buffer close
-nmap <Leader>d :bd<CR>
+nmap <Leader>d :Bdelete<CR>
 
 " list buffers
 nmap <leader>b :ls<CR>:e#
@@ -235,7 +235,7 @@ nmap <leader>ep :tabprevious<CR>
 nmap <leader>ec :tabclose<CR>
 
 " rm file
-nmap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
+nmap <leader>rm :call delete(expand('%')) \| Bdelete!<CR>
 
 " :q binding
 nmap <Leader>q :q<CR>
