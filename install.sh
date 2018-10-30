@@ -66,6 +66,7 @@ ln -sf $dotfiles_dir/prog/prettierrc ~/.prettierrc
 mkdir ~/.i3 && ln -sf $dotfiles_dir/i3/config ~/.i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
 
+mkdir ~/.bin
 mkdir -p ~/.vim/backup
 vim +PluginInstall +qall
 
