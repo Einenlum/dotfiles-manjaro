@@ -18,6 +18,9 @@ Plug 'itchyny/lightline.vim'
 " test vim commentary
 Plug 'tpope/vim-commentary'
 
+" Test startify
+Plug 'mhinz/vim-startify'
+
 " Keep Plug commands between vundle#begin/end.
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
