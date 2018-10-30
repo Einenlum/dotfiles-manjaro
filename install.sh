@@ -19,10 +19,14 @@ sudo pacman -S --needed --noconfirm \
     bat \
     yaourt \
     neovim \
-    ripgrep
+    ripgrep \
+    python-pip \
+    python2-pip
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
 yaourt ruby-neovim # need to find a way to automate this (with no confirm)
+sudo pip install neovim
+sudo pip3 install neovim
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
