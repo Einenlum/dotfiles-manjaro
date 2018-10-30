@@ -16,6 +16,7 @@ Plug 'itchyny/lightline.vim' " status line like airline and powerline but lighte
 Plug 'tpope/vim-commentary' " Easy comment with gc
 Plug 'mhinz/vim-startify' " Nice start menu in vim
 Plug 'StanAngeloff/php.vim' " Improved PHP highlighting
+Plug 'stephpy/vim-php-cs-fixer' " php cs fix with ,pcd a file
 
 Plug 'tpope/vim-fugitive' " add git integration
 Plug 'kien/ctrlp.vim'
