@@ -30,6 +30,10 @@ sudo pip3 install neovim
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
+mkdir ~/.bin
+wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy -O ~/.bin/diff-so-fancy
+chmod +x ~/.bin/diff-so-fancy
+
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -66,7 +70,6 @@ ln -sf $dotfiles_dir/prog/prettierrc ~/.prettierrc
 mkdir ~/.i3 && ln -sf $dotfiles_dir/i3/config ~/.i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
 
-mkdir ~/.bin
 mkdir -p ~/.vim/backup
 vim +PluginInstall +qall
 
