@@ -3,9 +3,9 @@
 ## Usage
 
 ```
-sudo pacman -Sy
-sudo pacman -S git
-git clone https://github.com/Einenlum/dotfiles-manjaro.git ~/dotfiles
-cd ~/dotfiles
+sudo pacman -Sy && \
+sudo pacman -S git --no-confirm && \
+git clone https://github.com/Einenlum/dotfiles-manjaro.git ~/dotfiles && \
+cd ~/dotfiles && \
 ./install.sh
 ```
