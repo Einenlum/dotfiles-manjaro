@@ -2,6 +2,10 @@
 
 ## Usage
 
-Clone it in `~/dotfiles`.
-
-Then `cd ~/dotfiles && bash ./install.sh`.
+```
+sudo pacman -Sy
+sudo pacman -S git
+git clone https://github.com/Einenlum/dotfiles-manjaro.git ~/dotfiles
+cd ~/dotfiles
+./install.sh
+```
