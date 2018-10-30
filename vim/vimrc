@@ -12,8 +12,11 @@ call plug#begin()
 " let Vundle manage Vundle, required
 Plug 'gmarik/Vundle.vim'
 
-" test line
+" test light line
 Plug 'itchyny/lightline.vim'
+
+" test vim commentary
+Plug 'tpope/vim-commentary'
 
 " Keep Plug commands between vundle#begin/end.
 " plugin on GitHub repo
