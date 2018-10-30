@@ -12,24 +12,17 @@ call plug#begin()
 " let Vundle manage Vundle, required
 Plug 'gmarik/Vundle.vim'
 
-" test light line
-Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim' " status line like airline and powerline but lighter
+Plug 'tpope/vim-commentary' " Easy comment with gc
+Plug 'mhinz/vim-startify' " Nice start menu in vim
+Plug 'StanAngeloff/php.vim' " Improved PHP highlighting
 
-" test vim commentary
-Plug 'tpope/vim-commentary'
-
-" Test startify
-Plug 'mhinz/vim-startify'
-
-" Keep Plug commands between vundle#begin/end.
-" plugin on GitHub repo
-Plug 'tpope/vim-fugitive'
-" Plug from http://vim-scripts.org/vim/scripts.html
+Plug 'tpope/vim-fugitive' " add git integration
 Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar' " F8 displays functions and variables (thx to ctags)
 Plug 'godlygeek/tabular'
 Plug 'jordwalke/flatlandia'
-Plug 'sjbach/lusty'
+Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
 Plug 'SirVer/ultisnips'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'arnaud-lb/vim-php-namespace'
@@ -60,7 +53,7 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
-Plug 'moll/vim-bbye'
+Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
