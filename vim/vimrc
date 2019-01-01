@@ -63,6 +63,7 @@ Plug 'vim-scripts/AfterColors.vim'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
+" Plug 'joonty/vdebug' " xdebug
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -116,6 +117,7 @@ map <Leader>n :bn<cr>
 map <Leader>p :bp<cr>
 
 " Easy tags jump
+set tags+=tags
 set tags+=vendor.tags
 noremap <Leader>t "zyiw:exe ":tj ".@z.""<CR>
 
