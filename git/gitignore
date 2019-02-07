@@ -1,4 +1,12 @@
+# js
 node_modules
+
+# php
+vendor
+
+# python
+env/
+
+# tools
 tags
 vendor.tags
-vendor
