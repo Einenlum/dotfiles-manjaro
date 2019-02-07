@@ -62,7 +62,10 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'vim-scripts/AfterColors.vim'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
+Plug 'tmhedberg/SimpylFold' " Help folding in Python
+Plug 'vim-scripts/indentpython.vim' " Help indenting in Python, respecting PEP-8
 Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
+Plug 'Valloric/YouCompleteMe' " Completion for python
 " Plug 'joonty/vdebug' " xdebug
 
 " All of your Plugins must be added before the following line
@@ -354,3 +357,24 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 nmap <C-p> <Esc>:Files<CR>
 nmap <Leader>f :Find 
+
+" Fold functions/methods
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" Improve python indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+set encoding=utf-8
+
+" Tweaks for YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
