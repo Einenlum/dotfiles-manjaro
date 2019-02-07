@@ -103,6 +103,7 @@ alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
 alias bat='bat --paging=never --style=plain'
 alias vim='nvim'
+alias baum='tree -aL 1'
 
 # allow ctrl-s
 stty -ixon
