@@ -1,0 +1,3 @@
+code_transform.class_new.variants:
+    "interface": interface
+    "trait": trait

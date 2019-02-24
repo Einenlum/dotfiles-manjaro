@@ -16,25 +16,22 @@ Plug 'itchyny/lightline.vim' " status line like airline and powerline but lighte
 Plug 'tpope/vim-commentary' " Easy comment with gc
 Plug 'mhinz/vim-startify' " Nice start menu in vim
 Plug 'StanAngeloff/php.vim' " Improved PHP highlighting
-Plug 'stephpy/vim-php-cs-fixer' " php cs fix with ,pcd a file
 
 " fzf
 Plug 'junegunn/fzf.vim'
 
 " Autocompletion
 Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+Plug 'roxma/nvim-yarp' " Dependency of ncm2
 Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 Plug 'phpactor/ncm2-phpactor'
 
 Plug 'tpope/vim-fugitive' " add git integration
-Plug 'majutsushi/tagbar' " F8 displays functions and variables (thx to ctags)
 Plug 'godlygeek/tabular'
 Plug 'jordwalke/flatlandia'
 Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
 Plug 'SirVer/ultisnips'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'arnaud-lb/vim-php-namespace'
 Plug 'evidens/vim-twig'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'bling/vim-bufferline'
@@ -54,7 +51,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'vim-scripts/Rename'
-Plug 'dantleech/vim-phpnamespace'
 Plug 'jacoborus/tender.vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'danilo-augusto/vim-afterglow'
@@ -65,8 +61,10 @@ Plug 'epilande/vim-react-snippets'
 Plug 'tmhedberg/SimpylFold' " Help folding in Python
 Plug 'vim-scripts/indentpython.vim' " Help indenting in Python, respecting PEP-8
 Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
-Plug 'Valloric/YouCompleteMe' " Completion for python
-" Plug 'joonty/vdebug' " xdebug
+" Plug 'Valloric/YouCompleteMe' " Completion for python
+" ycm does not work for now. Buggy
+Plug 'joonty/vdebug' " xdebug
+Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config regarding the root dir
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -80,7 +78,7 @@ call plug#end()            " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set exrc
+set exrc " Enable local vimrc
 set nocompatible
 set hidden
 set wildmenu
@@ -107,8 +105,8 @@ set background=dark
 let mapleader = ","
 set t_Co=256
 let g:Powerline_symbols='fancy'
-nnoremap <F6> :silent !ctags -f tags src spec features tests&<CR>
-nnoremap <F7> :silent !ctags -f vendor.tags vendor&<CR>
+" nnoremap <F6> :silent !ctags -f tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP src spec features tests&<CR>
+" nnoremap <F7> :silent !ctags -f vendor.tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP vendor&<CR>
 set clipboard=unnamedplus " Allow to cp/p from clipboard
 
 " easy copy-paste clipboard
@@ -118,11 +116,6 @@ nmap <Leader>p "+p<CR>
 " buffer management
 map <Leader>n :bn<cr>
 map <Leader>p :bp<cr>
-
-" Easy tags jump
-set tags+=tags
-set tags+=vendor.tags
-noremap <Leader>t "zyiw:exe ":tj ".@z.""<CR>
 
 " Clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>
@@ -143,11 +136,6 @@ if(!isdirectory(a:directory))
     call mkdir(a:directory, 'p')
 endif
 endfunction
-
-" vim-php-namespace
-inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>u :call PhpInsertUse()<CR>
-map <buffer> <leader>bns :call PhpExpandClass()<CR>
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -376,5 +364,86 @@ au BufNewFile,BufRead *.py
 set encoding=utf-8
 
 " Tweaks for YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Project root is discovered thanks to these files automatically
+let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
+
+" At startup, change the vdebug path
+" function! SetupDebug()
+"   let g:vdebug_options['path_maps'] = {'/usr/share/www/chal': call('projectroot#get', a:000)}
+"   " Hack to override vdebug options
+"   source ~/.vim/plugged/vdebug/plugin/vdebug.vim
+" endfunction
+" autocmd VimEnter * :call SetupDebug()
+
+let g:vdebug_keymap = {
+\    "run" : "<Leader>r",
+\    "run_to_cursor" : "<Down>",
+\    "step_over" : "<Up>",
+\    "step_into" : "<Left>",
+\    "step_out" : "<Right>",
+\    "close" : "q",
+\    "detach" : "<F7>",
+\    "set_breakpoint" : "<Leader>s",
+\    "eval_visual" : "<Leader>e"
+\}
+
+" Allows Vdebug to bind to all interfaces.
+let g:vdebug_options = {}
+
+" Stops execution at the first line.
+let g:vdebug_options['break_on_open'] = 1
+let g:vdebug_options['max_children'] = 128
+
+" Use the compact window layout.
+let g:vdebug_options['watch_window_style'] = 'compact'
+
+" Because it's the company default.
+let g:vdebug_options['ide_key'] = 'vim_session'
+
+
+" Need to set as empty for this to work with Vagrant boxes.
+let g:vdebug_options['server'] = ""
+
+let g:vdebug_options['path_maps'] = {'/usr/share/www/chal': '/home/Prog/php/chal'}
+
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+
+" Goto definition of class or class member under the cursor
+nmap <Leader>gt :call phpactor#GotoDefinition()<CR>
+
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
+
+" Transform the classes in the current file
+nmap <Leader>tt :call phpactor#Transform()<CR>
+
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+
+" Extract method from selection
+vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+
+function! CreatePHPClass(variantName)
+    call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite": 1 })
+endfunction
+
+" Generate a default new PHP class (replacing the current file)
+nmap <Leader>cc :call CreatePHPClass("default")<CR>
+
+" Generate a default new PHP interface (replacing the current file)
+nmap <Leader>ci :call CreatePHPClass("interface")<CR>
+
+" Generate a default new PHP trait (replacing the current file)
+nmap <Leader>ct :call CreatePHPClass("trait")<CR>

@@ -1,35 +1,11 @@
 snippet ipsr "Interface declaration template" !b
-<?php
-
-declare(strict_types=1);
-
-namespace ${1:`!v PhpNamespaceGet()`};
-
-interface ${1:`!v expand("%:t:r")`}
-{
-}
+${`!v CreatePHPClass('interface')`}
 endsnippet
 
 snippet cpsr "Class declaration template" !b
-<?php
-
-declare(strict_types=1);
-
-namespace ${1:`!v PhpNamespaceGet()`};
-
-final class ${1:`!v expand("%:t:r")`}
-{
-}
+${`!v CreatePHPClass('default')`}
 endsnippet
 
 snippet tpsr "Trait declaration template" !b
-<?php
-
-declare(strict_types=1);
-
-namespace ${1:`!v PhpNamespaceGet()`};
-
-trait ${1:`!v expand("%:t:r")`}
-{
-}
+${`!v CreatePHPClass('trait')`}
 endsnippet

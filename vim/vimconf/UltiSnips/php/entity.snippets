@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ${2:`!v expand("%:t:r")`}
 {
-
     /**
      * @ORM\Column(type="bigint")
      * @ORM\Id
@@ -21,29 +20,11 @@ class ${2:`!v expand("%:t:r")`}
      */
     private $id;
 
-    /**
-     * @ORM\Column
-     */
-    private $name;
-
     public function getId()
     {
         return $this->id;
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
     ${1}
-
 }
 endsnippet
