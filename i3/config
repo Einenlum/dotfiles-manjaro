@@ -191,12 +191,13 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym XF86KbdBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86KbdBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86KbdBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86KbdBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # allow ctrl S
 exec --no-startup-id stty -ixon
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+exec --no-startup-id clipster -d

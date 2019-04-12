@@ -20,6 +20,7 @@ Plug 'mhinz/vim-startify' " Nice start menu in vim
 Plug 'StanAngeloff/php.vim' " Improved PHP highlighting
 
 " fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocompletion
@@ -33,7 +34,6 @@ Plug 'godlygeek/tabular'
 Plug 'jordwalke/flatlandia'
 Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
 Plug 'SirVer/ultisnips'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'evidens/vim-twig'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'bling/vim-bufferline'
@@ -107,9 +107,7 @@ set background=dark
 let mapleader = ","
 set t_Co=256
 let g:Powerline_symbols='fancy'
-" nnoremap <F6> :silent !ctags -f tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP src spec features tests&<CR>
-" nnoremap <F7> :silent !ctags -f vendor.tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP vendor&<CR>
-set clipboard=unnamedplus " Allow to cp/p from clipboard
+set clipboard+=unnamedplus " Allow to cp/p from clipboard
 
 " easy copy-paste clipboard
 vmap <Leader>y "+y<CR>
@@ -277,8 +275,6 @@ nnoremap f <nop>
 xnoremap f <nop>
 nmap fc  <Plug>Coerce
 
-autocmd FileType php set keywordprg=~/.bin/phpdoc.sh
-
 " Remove this f**king conceal of json quotes!
 let g:vim_json_syntax_conceal = 0
 let g:indentLine_noConcealCursor=""
@@ -301,21 +297,10 @@ let g:ale_lint_on_text_changed = 'never'
 
 nmap <Leader>m <Plug>(Prettier)
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue PrettierAsync
 
 autocmd FileType js setlocal shiftwidth=2 tabstop=2
 autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
-
-" Prettier for PHP
-" function PrettierPhpCursor()
-"   let save_pos = getpos(".")
-"   %! prettier --stdin --parser=php
-"   call setpos('.', save_pos)
-" endfunction
-" " define custom command
-" command PrettierPhp call PrettierPhpCursor()
-" " format on save
-" autocmd BufwritePre *.php PrettierPhp
 
 " fix syntax hl for ejs files
 au BufNewFile,BufRead *.ejs set filetype=html
@@ -371,4 +356,47 @@ set encoding=utf-8
 
 " Project root is discovered thanks to these files automatically
 let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
+
+function! CreatePHPClass(variantName)
+    call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite_existing": 1 })
+endfunction
+
+" At startup, change the vdebug path
+" function! SetupDebug()
+"   let g:vdebug_options['path_maps'] = {'/usr/share/www/chal': call('projectroot#get', a:000)}
+"   " Hack to override vdebug options
+"   source ~/.vim/plugged/vdebug/plugin/vdebug.vim
+" endfunction
+" autocmd VimEnter * :call SetupDebug()
+
+let g:vdebug_keymap = {
+\    "run" : "<Leader>r",
+\    "run_to_cursor" : "<Down>",
+\    "step_over" : "<Up>",
+\    "step_into" : "<Left>",
+\    "step_out" : "<Right>",
+\    "close" : "q",
+\    "detach" : "<F7>",
+\    "set_breakpoint" : "<Leader>s",
+\    "eval_visual" : "<Leader>e"
+\}
+
+" Allows Vdebug to bind to all interfaces.
+let g:vdebug_options = {}
+
+" Stops execution at the first line.
+let g:vdebug_options['break_on_open'] = 1
+let g:vdebug_options['max_children'] = 128
+
+" Use the compact window layout.
+let g:vdebug_options['watch_window_style'] = 'compact'
+
+" Because it's the company default.
+let g:vdebug_options['ide_key'] = 'docker'
+
+
+" Need to set as empty for this to work with Vagrant boxes.
+let g:vdebug_options['server'] = ""
+
+let g:vdebug_options['path_maps'] = {'/opt/app': '/home/einenlum/Prog/php/touristbak/app'}
 

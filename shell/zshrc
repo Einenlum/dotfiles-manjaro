@@ -88,6 +88,7 @@ alias g="git"
 alias gpf="git push -f"
 alias gp="git push"
 alias ga="git add --all"
+alias gpl="git pull --rebase"
 alias gc="git commit -m"
 alias gw="git add -A && git commit -m \"WIP\""
 alias gw="git add -A && git commit -m \"[ci skip] WIP\""
@@ -121,3 +122,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
