@@ -17,6 +17,7 @@ sudo pacman -S --needed --noconfirm \
     highlight \
     bat \
     yay \
+    dmenu \
     neovim \
     ripgrep \
     python-pip \
