@@ -21,7 +21,8 @@ sudo pacman -S --needed --noconfirm \
     neovim \
     ripgrep \
     python-pip \
-    python2-pip
+    python2-pip \ \
+    php
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
 yay ruby-neovim # need to find a way to automate this (with no confirm)
