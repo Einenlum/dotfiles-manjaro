@@ -20,6 +20,7 @@ Plug 'mhinz/vim-startify' " Nice start menu in vim
 Plug 'StanAngeloff/php.vim' " Improved PHP highlighting
 
 " fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Autocompletion
