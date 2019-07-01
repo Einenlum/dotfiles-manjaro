@@ -80,3 +80,9 @@ npm config set prefix '~/.npm-global'
 
 npm install -g tldr fkill-cli
 npm install -g eslint-plugin-react eslint@4.x babel-eslint@8
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
