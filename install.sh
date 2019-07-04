@@ -18,12 +18,16 @@ sudo pacman -S --needed --noconfirm \
     php \
     python2-pip \
     python-pip \
+    p7zip \
     ripgrep \
     ruby \
     tmux \
+    unrar \
+    unzip \
     xclip \
     yarn \
     yay \
+    zip \
     zsh
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
