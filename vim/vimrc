@@ -302,7 +302,7 @@ let g:ale_lint_on_text_changed = 'never'
 
 nmap <Leader>m <Plug>(Prettier)
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue PrettierAsync
 
 autocmd FileType js setlocal shiftwidth=2 tabstop=2
 autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
@@ -403,7 +403,7 @@ let g:vdebug_options['ide_key'] = 'vim_session'
 " Need to set as empty for this to work with Vagrant boxes.
 let g:vdebug_options['server'] = ""
 
-let g:vdebug_options['path_maps'] = {'/usr/share/www/chal': '/home/Prog/php/chal'}
+" let g:vdebug_options['path_maps'] = {'/usr/share/www/chal': '/home/Prog/php/chal'}
 
 nmap <Leader>u :call phpactor#UseAdd()<CR>
 
