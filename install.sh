@@ -5,25 +5,26 @@ sudo pacman -S --needed --noconfirm firefox chromium
 
 # Dev tools
 sudo pacman -S --needed --noconfirm \
-    gvim \
-    zsh \
-    tmux \
-    gnome-terminal \
-    nodejs \
-    npm \
-    ruby \
-    yarn \
-    gcc \
-    highlight \
     bat \
-    yay \
     dmenu \
+    gcc \
+    gnome-terminal \
+    gvim \
+    highlight \
     neovim \
-    ripgrep \
-    python-pip \
-    python2-pip \
+    npm \
+    nodejs \
+    pcmanfm \
     php \
-    xclip
+    python2-pip \
+    python-pip \
+    ripgrep \
+    ruby \
+    tmux \
+    xclip \
+    yarn \
+    yay \
+    zsh
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
 yay ruby-neovim # need to find a way to automate this (with no confirm)
