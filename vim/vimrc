@@ -11,9 +11,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-" let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
-
 Plug 'itchyny/lightline.vim' " status line like airline and powerline but lighter
 Plug 'tpope/vim-commentary' " Easy comment with gc
 Plug 'mhinz/vim-startify' " Nice start menu in vim
@@ -39,6 +36,7 @@ Plug 'evidens/vim-twig'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'bling/vim-bufferline'
 Plug 'stephpy/vim-yaml'
+Plug 'vim-syntastic/syntastic'
 Plug 'monochromegane/unite-yaml'
 Plug 'groenewege/vim-less'
 Plug 'henrik/vim-yaml-flattener'
@@ -49,7 +47,6 @@ Plug 'tpope/vim-abolish'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
@@ -68,6 +65,9 @@ Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
 " ycm does not work for now. Buggy
 Plug 'joonty/vdebug' " xdebug
 Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config regarding the root dir
+Plug 'luochen1990/rainbow' " Colors brackets according to levels
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -432,7 +432,7 @@ vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
 vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 function! CreatePHPClass(variantName)
-    call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite": 1 })
+    call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite_existing": 1 })
 endfunction
 
 " Generate a default new PHP class (replacing the current file)
@@ -443,3 +443,46 @@ nmap <Leader>ci :call CreatePHPClass("interface")<CR>
 
 " Generate a default new PHP trait (replacing the current file)
 nmap <Leader>ct :call CreatePHPClass("trait")<CR>
+
+" Color brackets automatically
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" Syntastic configuration
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Syntastic configuration for PHP
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_phpcs_exec = './vendor/bin/phpcs'
+let g:syntastic_php_phpcs_args = '--standard=psr2'
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
