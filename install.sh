@@ -124,3 +124,6 @@ fc-cache -f -v
 # Install kitty themes
 KITTY_THEME=https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu_mirage.conf
 wget "$KITTY_THEME" -P ~/.config/kitty/themes
+
+# initialize broot
+broot --install
