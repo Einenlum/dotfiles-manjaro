@@ -62,6 +62,7 @@ chsh -s /bin/zsh
 
 sudo rm -Rf ~/.vim
 sudo rm -Rf ~/.vimrc
+sudo rm -Rf ~/.config/nvim
 sudo rm -Rf ~/.bashrc
 sudo rm -Rf ~/.tmux
 sudo rm -Rf ~/.tmux.conf
@@ -76,10 +77,7 @@ dotfiles_dir=~/dotfiles
 
 mkdir -p ~/.config/nvim
 
-ln -sf $dotfiles_dir/vim/vimconf ~/.vim
-ln -sf $dotfiles_dir/vim/vimrc ~/.vimrc
-ln -sf $dotfiles_dir/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf $dotfiles_dir/vim/vimrc.bepo ~/.vimrc.bepo
+ln -sf $dotfiles_dir/nvim ~/.config/nvim
 ln -sf $dotfiles_dir/shell/tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/shell/zshrc ~/.zshrc
 ln -sf $dotfiles_dir/git/gitconfig ~/.gitconfig
@@ -90,8 +88,7 @@ ln -sf $dotfiles_dir/phpactor ~/.config/phpactor
 mkdir ~/.i3 && ln -sf $dotfiles_dir/i3/config ~/.i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
 
-mkdir -p ~/.vim/backup
-vim +PluginInstall +qall
+mkdir -p ~/.config/nvim/backup
 
 # npm global
 mkdir ~/.npm-global
