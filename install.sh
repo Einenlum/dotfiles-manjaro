@@ -1,15 +1,21 @@
 #!/bin/bash
 
 # Browsers
-sudo pacman -S --needed --noconfirm firefox chromium
+sudo pamac update --no-confirm
+
 
 # Dev tools
-sudo pacman -S --needed --noconfirm \
+sudo pamac install --no-confirm \
     base-devel \
     bat \
+    brave-browser \
     broot \
+    chromium \
     dmenu \
+    docker \
+    docker-compose \
     fd \
+    firefox \
     fzf \
     gcc \
     git-delta \
@@ -36,8 +42,7 @@ sudo pacman -S --needed --noconfirm \
     zip \
     zoxide \
     zsh
-sudo pacman -S --needed --noconfirm docker docker-compose
-sudo pacman -S python2-pip
+
 yay ruby-neovim # need to find a way to automate this (with no confirm)
 yay sublime-text-4
 sudo pip install neovim
