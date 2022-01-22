@@ -77,8 +77,6 @@ sudo rm -f ~/.eslintrc
 
 dotfiles_dir=~/dotfiles
 
-mkdir -p ~/.config/nvim
-
 ln -sf $dotfiles_dir/nvim ~/.config/nvim
 ln -sf $dotfiles_dir/shell/tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/shell/zshrc ~/.zshrc
