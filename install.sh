@@ -122,7 +122,7 @@ fc-cache -f -v
 
 # Install kitty themes
 KITTY_THEME=https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu_mirage.conf
-wget "$THEME" -P ~/.config/kitty/themes
+wget "$KITTY_THEME" -P ~/.config/kitty/themes
 
 # Make zsh default shell
 chsh -s /bin/zsh
