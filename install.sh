@@ -40,8 +40,7 @@ sudo pamac install --no-confirm \
     yarn \
     yay \
     zip \
-    zoxide \
-    zsh
+    zoxide
 
 yay ruby-neovim # need to find a way to automate this (with no confirm)
 yay sublime-text-4
@@ -60,12 +59,6 @@ sudo mv psysh /usr/local/bin/.
 mkdir ~/.bin
 wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy -O ~/.bin/diff-so-fancy
 chmod +x ~/.bin/diff-so-fancy
-
-# oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Make zsh default shell
-chsh -s /bin/zsh
 
 sudo rm -Rf ~/.vim
 sudo rm -Rf ~/.vimrc
@@ -129,3 +122,6 @@ fc-cache -f -v
 # Install kitty themes
 KITTY_THEME=https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu_mirage.conf
 wget "$THEME" -P ~/.config/kitty/themes
+
+# Make zsh default shell
+chsh -s /bin/zsh
