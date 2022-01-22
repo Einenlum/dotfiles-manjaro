@@ -33,6 +33,7 @@ sudo pamac install --no-confirm \
     php \
     python-pip \
     ripgrep \
+    rofi \
     ruby \
     tmux \
     unrar \
