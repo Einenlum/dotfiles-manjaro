@@ -22,7 +22,7 @@ sudo pamac install --no-confirm \
     gnome-terminal \
     gvim \
     highlight \
-    i3 \
+    i3-gaps \
     kitty \
     meld \
     neovim \
