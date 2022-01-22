@@ -44,6 +44,8 @@ sudo pip install neovim
 sudo pip3 install neovim
 sudo groupadd docker
 sudo usermod -aG docker $USER
+sudo usermod -aG wheel $USER
+sudo usermod -aG video $USER
 
 # Install psysh
 wget https://psysh.org/psysh
