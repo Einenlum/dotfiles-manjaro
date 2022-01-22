@@ -51,13 +51,16 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+# export PATH="$HOME/.phpenv/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/.config/composer/vendor/bin:$PATH
 export PATH=~/.bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.poetry/bin:$PATH
+
+# eval "$(phpenv init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -81,17 +84,20 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -u2"
-alias sf="php app/console"
-alias sfc="php app/console cache:clear"
+alias sf="symfony"
+alias sfc="symfony console"
+alias sfcc="php app/console cache:clear"
 alias sfr="php app/console server:run"
 alias g="git"
-alias gpf="git push -f"
+alias gpf="git push --force-with-lease"
 alias gp="git push"
+alias gpm="git push --mirror"
+alias gpr="git pull --rebase"
 alias ga="git add --all"
 alias gc="git commit -m"
 alias gw="git add -A && git commit -m \"WIP\""
 alias gw="git add -A && git commit -m \"[ci skip] WIP\""
-alias gaw="git add -A && git commit --amend -m \"[ci skip] WIP\""
+alias gcam="git commit --amend --no-edit"
 alias dcc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcr="docker-compose run --rm"
@@ -102,9 +108,14 @@ alias dcb="docker-compose build"
 alias dce="docker-compose exec"
 alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
-alias bat='bat --paging=never --style=plain'
+alias bat='bat --paging=never --style=plain,numbers'
 alias vim='nvim'
+alias vi='vim'
 alias baum='tree -aL 1'
+alias srg="rg -j1"
+alias kl="kubectl"
+alias pos="poetry shell"
+alias c="composer"
 
 # allow ctrl-s
 stty -ixon
@@ -113,6 +124,11 @@ stty -ixon
 xset b off
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.phpstorm/bin"
+# export PATH="$PATH:$HOME/anaconda3/bin"
+
+export GOPATH="$HOME/Prog/go"
 
 # Use fd instead of default fzf (for speed and gitignore)
 # --files: List files that would be searched but do not search
@@ -122,4 +138,35 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" cloudflare/phan:latest $@; return $?; }
+# source /usr/share/nvm/init-nvm.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/einenlum/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/einenlum/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/einenlum/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/einenlum/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
+
+searchgit() {
+  STRING_TO_SEARCH=$1
+  shift;
+  git log -S"$STRING_TO_SEARCH" --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --reverse --tiebreak=index \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+                FZF-EOF
+              "
+}
+# eval "$(pyenv init -)"

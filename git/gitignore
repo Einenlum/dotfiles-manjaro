@@ -3,12 +3,30 @@ node_modules
 
 # php
 vendor
+.env.local
+.env.*.local
+.phpunit.result.cache
 
 # python
 env/
+.venv/
 __pycache__/
 .mypy_cache/
+
+# poetry
+/*.egg-info
 
 # tools
 tags
 vendor.tags
+
+.idea
+.php_cs.cache
+.vscode
+.phpactor.yml
+auth.json
+.phpunit.result.cache
+.vimrc
+.php-version
+id_rsa
+

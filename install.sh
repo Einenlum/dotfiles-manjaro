@@ -5,20 +5,26 @@ sudo pacman -S --needed --noconfirm firefox chromium
 
 # Dev tools
 sudo pacman -S --needed --noconfirm \
+    base-devel \
     bat \
+    broot \
     dmenu \
+    fd \
+    fzf \
     gcc \
+    git-delta \
     gnome-terminal \
     gvim \
     highlight \
+    kitty \
+    meld \
     neovim \
-    npm \
     nodejs \
+    npm \
     pcmanfm \
-    php \
-    python2-pip \
-    python-pip \
     p7zip \
+    php \
+    python-pip \
     ripgrep \
     ruby \
     tmux \
@@ -28,14 +34,21 @@ sudo pacman -S --needed --noconfirm \
     yarn \
     yay \
     zip \
+    zoxide \
     zsh
 sudo pacman -S --needed --noconfirm docker docker-compose
 sudo pacman -S python2-pip
 yay ruby-neovim # need to find a way to automate this (with no confirm)
+yay sublime-text-4
 sudo pip install neovim
 sudo pip3 install neovim
 sudo groupadd docker
 sudo usermod -aG docker $USER
+
+# Install psysh
+wget https://psysh.org/psysh
+chmod +x psysh
+sudo mv psysh /usr/local/bin/.
 
 mkdir ~/.bin
 wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy -O ~/.bin/diff-so-fancy
@@ -93,4 +106,22 @@ php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 sudo chmod +x /usr/local/bin/composer
 
-composer global require hirak/prestissimo
+# Set default browser
+dg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
+
+# Install fonts
+cd /tmp
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Mononoki.zip
+unzip Mononoki.zip -d mononoki
+sudo cp -R mononoki /usr/share/fonts/.
+
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+unzip Hack-v3.003-ttf.zip -d hack
+sudo cp -R hack /usr/share/fonts/.
+
+# Regenerate fonts cache
+fc-cache -f -v
+
+# Install kitty themes
+KITTY_THEME=https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/ayu_mirage.conf
+wget "$THEME" -P ~/.config/kitty/themes

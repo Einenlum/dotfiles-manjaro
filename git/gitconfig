@@ -3,16 +3,22 @@
 	st = status
 	br = branch
 	ci = commit
+    # Amend in a past commit using fzf
+    autofixup = "!f() { COMMIT=$(git log --pretty=oneline | fzf | awk '{print $1}'); git commit --fixup $COMMIT; GIT_SEQUENCE_EDITOR=: git rebase --autostash --autosquash -i $COMMIT^; }; f"
+    # Starts an interactive rebase by selecting a commit with fzf
+    frebase = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1\"^\"}' | xargs -o git rebase --autostash -i; }; f"
+    # Select a branch from your recent used ones
+    fco = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf | sed 's/remotes\\/origin\\///' | xargs -o git checkout; }; f"
+    fd = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf | sed 's/remotes\\/origin\\///' | xargs -o git br -D; }; f"
 [user]
-	email = yann.rabiller@gmail.com
-	name = Einenlum
+	email = yann.rabiller@fortrabbit.com
+	name = Yann Rabiller
 [push]
 	default = current
 [core]
     excludesfile = ~/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+    #pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -27,3 +33,24 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[interactive]
+    #pager = diff-so-fancy | less --tabs=4 -RFX
+    diffFilter = delta --color-only
+[pull]
+	ff = only
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+	side-by-side = true
+    line-numbers-left-format = ""
+    line-numbers-right-format = "│ "
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    syntax-theme = Github
+[merge]
+	tool = meld
+[mergetool]
+	keepBackup = false

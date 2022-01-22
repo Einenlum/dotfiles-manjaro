@@ -1,3 +1,7 @@
 code_transform.class_new.variants:
     "interface": interface
     "trait": trait
+    "strict-class": strict-class
+
+    # worse_reflection.stub_dir: "/tmp/frbit-dashboard/vendor/ide-test"
+rpc.store_replay: true
