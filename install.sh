@@ -27,6 +27,7 @@ sudo pamac install --no-confirm \
     kitty \
     meld \
     neovim \
+    nitrogen \
     nodejs \
     npm \
     pcmanfm \
@@ -130,8 +131,7 @@ cd /tmp && git clone --depth=1 https://github.com/adi1090x/rofi.git
 cd rofi && chmod +x setup.sh
 ./setup.sh
 
-rm ~/.config/rofi/launchers/text/styles/custom.rasi && \
-    ln -sf $dotfiles_dir/rofi/theme/custom.rasi ~/.config/rofi/launchers/text/styles/custom.rasi
+ln -sf $dotfiles_dir/rofi/theme/custom.rasi ~/.config/rofi/launchers/text/styles/custom.rasi
 rm ~/.config/rofi/launchers/text/styles/colors.rasi && \
     ln -sf $dotfiles_dir/rofi/theme/colors.rasi ~/.config/rofi/launchers/text/styles/colors.rasi
 ln -sf $dotfiles_dir/rofi/theme/custom_style.rasi ~/.config/rofi/launchers/text/custom_style.rasi
