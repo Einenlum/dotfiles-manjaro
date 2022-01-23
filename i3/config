@@ -25,13 +25,14 @@ font pango:FreeSans 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec gnome-terminal --full-screen
+bindsym $mod+Shift+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+b kill
 
 # start dmenu (a program launcher)
-bindsym $mod+i exec dmenu_run
+# bindsym $mod+i exec dmenu_run
+bindsym $mod+i exec "rofi -modi drun -show drun -theme ~/.config/rofi/launchers/text/custom_style.rasi"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -149,9 +150,15 @@ bindsym $mod+o mode "resize"
 bar {
         status_command i3status
         colors {
-                background #002B36
+                background #0C1620
+                active_workspace   #153326 #193B60 #FFFFFF
+                inactive_workspace   #16222F #16222F #888888
+                focused_workspace  #37505D #37505D #FFFFFF
+                urgent_workspace   #2F343A #6A4B7E #FFFFFF
         }
 }
+
+client.focused          #4D716D #37505D #FFFFFF #2E9EF4   #285577
 
 # Shortcuts
 # Starts firefox
@@ -195,3 +202,6 @@ bindsym XF86KbdBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 exec --no-startup-id stty -ixon
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+
+for_window [class=".*"] border pixel 3
+gaps inner 10
