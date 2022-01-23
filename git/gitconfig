@@ -17,7 +17,6 @@
 	default = current
 [core]
     excludesfile = ~/.gitignore
-    #pager = diff-so-fancy | less --tabs=4 -RFX
     pager = delta
 [color]
 	ui = true
@@ -34,7 +33,6 @@
 	new = green bold
 	whitespace = red reverse
 [interactive]
-    #pager = diff-so-fancy | less --tabs=4 -RFX
     diffFilter = delta --color-only
 [pull]
 	ff = only
