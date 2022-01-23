@@ -23,6 +23,7 @@ sudo pamac install --no-confirm \
     gvim \
     highlight \
     i3-gaps \
+    i3status \
     kitty \
     meld \
     neovim \
