@@ -124,7 +124,4 @@ wget "$KITTY_THEME" -P ~/.config/kitty/themes
 # initialize broot
 broot --install
 
-nvim +PluginInstall +qall
-nvim +UpdateRemotePlugins +qall
-
 chsh -s $(which zsh)
