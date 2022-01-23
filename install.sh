@@ -128,3 +128,5 @@ broot --install
 
 nvim +PluginInstall +qall
 nvim +UpdateRemotePlugins +qall
+
+chsh -s $(which zsh)
