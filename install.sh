@@ -48,6 +48,7 @@ sudo pamac install --no-confirm \
 
 yay ruby-neovim # need to find a way to automate this (with no confirm)
 yay sublime-text-4
+yay code-minimap
 sudo pip install neovim
 sudo pip3 install neovim
 sudo groupadd docker
