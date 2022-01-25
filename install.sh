@@ -136,3 +136,6 @@ ln -sf $dotfiles_dir/rofi/theme/custom.rasi ~/.config/rofi/launchers/text/styles
 rm ~/.config/rofi/launchers/text/styles/colors.rasi && \
     ln -sf $dotfiles_dir/rofi/theme/colors.rasi ~/.config/rofi/launchers/text/styles/colors.rasi
 ln -sf $dotfiles_dir/rofi/theme/custom_style.rasi ~/.config/rofi/launchers/text/custom_style.rasi
+
+# Install poetry
+curl -sSL https://install.python-poetry.org | python3 -
