@@ -174,8 +174,6 @@ bindsym $ms+q exec setxkbmap fr bepo
 
 # Startup
 exec --no-startup-id nm-applet
-exec --no-startup-id guake
-exec --no-startup-id redshift-gtk
 
 # Fix touchpad
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Device Accel Constant Deceleration" 1.5
