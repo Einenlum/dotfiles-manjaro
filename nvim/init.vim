@@ -75,7 +75,6 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'AlessandroYorba/Alduin'
 Plug 'vim-scripts/AfterColors.vim'
-Plug 'wfxr/minimap.vim' " Add a minimap
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'tmhedberg/SimpylFold' " Help folding in Python
@@ -592,14 +591,10 @@ lua require('lualine').setup()
 " Where am I?
 lua require("gps-config")
 
-" minimap
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-
 " Disable git blame by default
 let g:gitblame_enabled = 0
 let g:gitblame_message_template = '<summary> • <sha> • <date> • <author>'
+let g:gitblame_print_virtual_text = 0
 " Time in milliseconds (default 0)
 let g:Illuminate_delay = 700
 
