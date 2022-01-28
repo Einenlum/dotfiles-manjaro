@@ -592,3 +592,10 @@ let g:Illuminate_delay = 700
 " nmap cr <NOP>
 " nmap rc <NOP>
 " nmap cc <NOP>
+
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+
+colorscheme nord
+hi Comment guifg=#949990
