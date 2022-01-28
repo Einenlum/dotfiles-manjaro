@@ -35,6 +35,9 @@ Plug 'phpactor/ncm2-phpactor'
 " autoformat code for python
 Plug 'psf/black', { 'tag': '19.10b0' }
 
+" Test github copilot
+Plug 'github/copilot.vim'
+
 " jump to definition for python
 Plug 'davidhalter/jedi-vim'
 
@@ -592,6 +595,11 @@ let g:Illuminate_delay = 700
 " nmap cr <NOP>
 " nmap rc <NOP>
 " nmap cc <NOP>
+
+" Copilot config
+imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 
 let g:nord_italic = 1
 let g:nord_underline = 1
