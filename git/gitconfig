@@ -32,6 +32,8 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[init]
+    defaultBranch = master
 [interactive]
     diffFilter = delta --color-only
 [pull]
