@@ -58,7 +58,6 @@ Plug 'monochromegane/unite-yaml'
 Plug 'groenewege/vim-less'
 Plug 'f-person/git-blame.nvim' " See git blame info
 Plug 'Einenlum/yaml-revealer'
-Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'editorconfig/editorconfig-vim'
