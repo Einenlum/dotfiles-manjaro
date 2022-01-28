@@ -25,8 +25,7 @@ Plug 'tpope/vim-commentary' " Easy comment with gc
 Plug 'mhinz/vim-startify' " Nice start menu in vim
 
 " fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua'
 
 " Autocompletion
 Plug 'ncm2/ncm2'
@@ -390,9 +389,11 @@ set completeopt=noinsert,menuone,noselect
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-nmap <C-p> <Esc>:Files<CR>
-nmap <C-o> <Esc>:Buffers<CR>
-nmap <Leader>f :Find 
+nmap <C-p> <Esc>:FzfLua files<CR>
+nmap <C-o> <Esc>:FzfLua buffers<CR>
+nmap <C-h> <Esc>:FzfLua command_history<CR>
+nmap <C-w> <Esc>:FzfLua builtin<CR>
+nmap <Leader>f :FzfLua live_grep_native<CR>
 
 " Fold functions/methods
 set foldmethod=indent
