@@ -318,8 +318,6 @@ nnoremap f <nop>
 xnoremap f <nop>
 nmap fc  <Plug>Coerce
 
-autocmd FileType php set keywordprg=~/.bin/phpdoc.sh
-
 " Remove this f**king conceal of json quotes!
 let g:vim_json_syntax_conceal = 0
 let g:indentLine_noConcealCursor=""
