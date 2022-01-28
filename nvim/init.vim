@@ -88,7 +88,6 @@ Plug 'FooSoft/vim-argwrap' " multi-line single line function
 
 Plug 'jiangmiao/auto-pairs' " Complete brackets and quotes
 Plug 'ryanoasis/vim-devicons' " icons in nerdtree and fzf
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " python highlighting
 Plug 'mechatroner/rainbow_csv' " Syntax highlighting + sql queries on CSV
 Plug 'chrisbra/Colorizer' " show colors after hexadecimal codes
 
