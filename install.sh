@@ -40,6 +40,7 @@ sudo pamac install --no-confirm \
     tmux \
     unrar \
     unzip \
+    vivid \
     xclip \
     yarn \
     yay \
@@ -126,6 +127,13 @@ wget "$KITTY_THEME" -P ~/.config/kitty/themes
 
 # initialize broot
 broot --install
+
+# Install nord vivid theme (for ls output)
+mkdir -p ~/.config/vivid/themes
+wget -O ~/.config/vivid/themes/nord.yml https://raw.githubusercontent.com/sharkdp/vivid/master/themes/nord.yml
+
+# Add custom oh my zsh theme
+ln -s $dotfiles_dir/shell/ohmyzsh/themes/pimpedgitster.zsh-theme ~/.oh-my-zsh/custom/themes/pimpedgitster.zsh-theme
 
 # Install rofi themes
 cd /tmp && git clone --depth=1 https://github.com/adi1090x/rofi.git
