@@ -138,7 +138,6 @@ set expandtab
 set shiftwidth=4
 set ruler
 set background=dark
-colorscheme two-firewatch
 let mapleader = ","
 set t_Co=256
 let g:Powerline_symbols='fancy'
