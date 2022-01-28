@@ -49,7 +49,6 @@ Plug 'godlygeek/tabular'
 Plug 'jordwalke/flatlandia'
 Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
 Plug 'SirVer/ultisnips'
-Plug 'easymotion/vim-easymotion'
 Plug 'evidens/vim-twig'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'bling/vim-bufferline'
