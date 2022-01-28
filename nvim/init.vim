@@ -137,7 +137,7 @@ set hlsearch
 set incsearch
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-set backupdir =~/.vim/backup
+set backupdir =~/.config/nvim/backup
 set wrap
 set scrolloff=5
 set title
