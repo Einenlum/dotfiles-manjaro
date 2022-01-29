@@ -8,8 +8,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" For php specific config, check ~/.vim/ftplugin/php.vim
-
 filetype off " required
 
 call plug#begin()
@@ -26,11 +24,6 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp' " Dependency of ncm2
 Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 Plug 'phpactor/ncm2-phpactor'
-" Plug 'kristijanhusak/deoplete-phpactor'
-
-" Autocompletion for python
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi'
 
 " autoformat code for python
 Plug 'psf/black', { 'tag': '19.10b0' }
@@ -75,8 +68,6 @@ Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'tmhedberg/SimpylFold' " Help folding in Python
 Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
-" Plug 'Valloric/YouCompleteMe' " Completion for python
-" ycm does not work for now. Buggy
 Plug 'joonty/vdebug' " xdebug
 Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config regarding the root dir
 Plug 'luochen1990/rainbow' " Colors brackets according to levels
@@ -143,9 +134,6 @@ set ruler
 set background=dark
 let mapleader = ","
 set t_Co=256
-let g:Powerline_symbols='fancy'
-" nnoremap <F6> :silent !ctags -f tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP src spec features tests&<CR>
-" nnoremap <F7> :silent !ctags -f vendor.tags -h=.php --PHP-kinds=+cf --recurse --exclude="*/cache/*" --exclude="*/logs/*" --exclude="*/data/*" --exclude="\.git" --exclude="\.svn" --languages=PHP vendor&<CR>
 set clipboard=unnamedplus " Allow to cp/p from clipboard
 
 " easy copy-paste clipboard
@@ -172,9 +160,6 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 " let g:UltiSnipsListSnippets = '<c-tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-" tagbar
-nmap <F8> :TagbarToggle<CR>
 
 " View differently normal spaces and non breakable spaces
 " set list listchars=nbsp:¬
@@ -391,10 +376,6 @@ set foldlevel=99
 nnoremap <space> za
 
 set encoding=utf-8
-
-" Tweaks for YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Project root is discovered thanks to these files automatically
 let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
