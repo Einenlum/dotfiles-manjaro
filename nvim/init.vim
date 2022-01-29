@@ -12,78 +12,26 @@ endif
 " filetype off " required
 
 call plug#begin()
-Plug 'nvim-lualine/lualine.nvim' " status line
-Plug 'kyazdani42/nvim-web-devicons' " icons for status line
-Plug 'tpope/vim-commentary' " Easy comment with gc
+
+" Look
+" ====
+
+" Start
+" -----
 Plug 'mhinz/vim-startify' " Nice start menu in vim
 
-" fzf
-Plug 'ibhagwan/fzf-lua'
-
-" Autocompletion
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp' " Dependency of ncm2
-Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
-Plug 'phpactor/ncm2-phpactor'
-
-" autoformat code for python
-Plug 'psf/black', { 'tag': '19.10b0' }
-
-" Test github copilot
-Plug 'github/copilot.vim'
-
-Plug 'tpope/vim-fugitive' " add git integration
-Plug 'godlygeek/tabular'
-Plug 'jordwalke/flatlandia'
-Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
-Plug 'SirVer/ultisnips'
-Plug 'evidens/vim-twig'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'bling/vim-bufferline'
-Plug 'stephpy/vim-yaml'
-Plug 'vim-syntastic/syntastic'
-Plug 'monochromegane/unite-yaml'
-Plug 'groenewege/vim-less'
-Plug 'f-person/git-blame.nvim' " See git blame info
-Plug 'Einenlum/yaml-revealer'
-Plug 'scrooloose/nerdtree'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'RRethy/vim-illuminate' " highlight keywords
-Plug 'tpope/vim-abolish'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'graphql', 'vue'] }
-Plug 'vim-scripts/Rename'
-Plug 'jacoborus/tender.vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'AlessandroYorba/Alduin'
-Plug 'vim-scripts/AfterColors.vim'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
-Plug 'tmhedberg/SimpylFold' " Help folding in Python
-Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
-Plug 'joonty/vdebug' " xdebug
-Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config regarding the root dir
-Plug 'luochen1990/rainbow' " Colors brackets according to levels
-Plug 'FooSoft/vim-argwrap' " multi-line single line function
-Plug 'jiangmiao/auto-pairs' " Complete brackets and quotes
+" Icons
+" -----
+Plug 'kyazdani42/nvim-web-devicons' " icons for status line
 Plug 'ryanoasis/vim-devicons' " icons in nerdtree and fzf
-Plug 'mechatroner/rainbow_csv' " Syntax highlighting + sql queries on CSV
+
+" Colors
+" ------
 Plug 'chrisbra/Colorizer' " show colors after hexadecimal codes
 
-" Easy motions
-Plug 'phaazon/hop.nvim'
-Plug 'ggandor/lightspeed.nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-" Where am I?
-Plug 'SmiteshP/nvim-gps'
-
 " Colorschemes
+" ------------
+Plug 'jacoborus/tender.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'ayu-theme/ayu-vim'
@@ -93,6 +41,83 @@ Plug 'glepnir/oceanic-material'
 Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 Plug 'rakr/vim-two-firewatch'
 Plug 'thenewvu/vim-colors-arthur' 
+Plug 'AlessandroYorba/Alduin'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+" Language
+" =========
+
+" Autocompletion
+" --------------
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp' " Dependency of ncm2
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+Plug 'phpactor/ncm2-phpactor'
+Plug 'github/copilot.vim' " Test github copilot
+
+" Formatting
+" ----------
+Plug 'psf/black', { 'tag': '19.10b0' } " autoformat code for python
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'graphql', 'vue'] }
+
+" Snippets
+" --------
+Plug 'SirVer/ultisnips' " Snippets
+
+" Debugging
+" ----------
+Plug 'joonty/vdebug' " xdebug
+
+" Linting
+" --------
+Plug 'vim-syntastic/syntastic'
+
+" Git
+" ===
+Plug 'tpope/vim-fugitive' " add git integration
+Plug 'f-person/git-blame.nvim' " See git blame info
+
+" Vim menu and behavior
+" =====================
+
+Plug 'ibhagwan/fzf-lua' " Add fzf menu
+Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
+Plug 'bling/vim-bufferline' " Display a line of buffers
+Plug 'nvim-lualine/lualine.nvim' " status line
+Plug 'scrooloose/nerdtree'
+Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config depending on the root dir
+Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
+Plug 'editorconfig/editorconfig-vim' " Use editorconfig file
+
+" Code navigation
+" ----------------
+Plug 'Einenlum/yaml-revealer' " Display and search in yaml files
+Plug 'tmhedberg/SimpylFold' " Help folding in Python
+Plug 'stephpy/vim-yaml' " Avoid slowliness with yaml files (is it still useful?)
+Plug 'luochen1990/rainbow' " Colors brackets according to levels
+Plug 'mechatroner/rainbow_csv' " Syntax highlighting + sql queries on CSV
+Plug 'phaazon/hop.nvim' " Easy motions 1
+Plug 'ggandor/lightspeed.nvim' " Easy motions 2
+Plug 'RRethy/vim-illuminate' " highlight keywords and values when staying on them
+" Supposted to help plugins with signature help. Is it still needed?
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " TSUpdate updates all the parsers
+Plug 'SmiteshP/nvim-gps' " Where am I in the file?
+
+" Code manipulation
+" -----------------
+Plug 'FooSoft/vim-argwrap' " multi-line single line function
+Plug 'godlygeek/tabular' " Allows to align things with :Tabularize
+Plug 'tpope/vim-commentary' " Easy comment with gc
+Plug 'tpope/vim-abolish' " Search and substitute words respecting case
+Plug 'jiangmiao/auto-pairs' " Complete brackets and quotes
+
+" File manipulation
+" -----------------
+Plug 'vim-scripts/Rename' " Rename the file in buffer
 
 call plug#end()            " required
 
@@ -156,9 +181,9 @@ set cursorcolumn
 
 " mkdir directory automatically
 function! <SID>MkdirsIfNotExists(directory)
-if(!isdirectory(a:directory))
+  if(!isdirectory(a:directory))
     call mkdir(a:directory, 'p')
-endif
+  endif
 endfunction
 autocmd BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
 
@@ -202,7 +227,7 @@ nnoremap <silent> <leader><Space> :ArgWrap<CR>
 " Custom functions
 " ================
 
-" Allow to pretty print xml file
+" Function to pretty print an XML file
 function! DoPrettyXML()
   " save the filetype so we can restore it later
   let l:origft = &ft
@@ -485,11 +510,6 @@ autocmd BufWritePre *.py execute ':Black'
 
 lua require'hop'.setup()
 nnoremap è :HopWord<CR>
-
-" ?
-nnoremap j <NOP>
-" ?
-nnoremap k <NOP>
 nnoremap <C-m> <NOP>
 
 " Lightspeed
@@ -544,5 +564,7 @@ let g:nord_italic_comments = 1
 " Default Colorscheme
 
 colorscheme nord
+
+" Most dark colorschemes print comments in a very unreadable way.
 hi Comment guifg=#949990
 
