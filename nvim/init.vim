@@ -1,4 +1,4 @@
-let $NVIM_CONFIG_DIR=stdpath('config')
+let $NVIM_CONFIG_DIR=stdpath('config') " ~/.local/share/nvim
 source $NVIM_CONFIG_DIR/bepo.init
 
 " Install vim-plug if not exists
@@ -8,7 +8,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-filetype off " required
+" Not sure why. Let's test without it.
+" filetype off " required
 
 call plug#begin()
 Plug 'nvim-lualine/lualine.nvim' " status line
@@ -30,9 +31,6 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 
 " Test github copilot
 Plug 'github/copilot.vim'
-
-" jump to definition for python
-Plug 'davidhalter/jedi-vim'
 
 Plug 'tpope/vim-fugitive' " add git integration
 Plug 'godlygeek/tabular'
@@ -72,7 +70,6 @@ Plug 'joonty/vdebug' " xdebug
 Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config regarding the root dir
 Plug 'luochen1990/rainbow' " Colors brackets according to levels
 Plug 'FooSoft/vim-argwrap' " multi-line single line function
-
 Plug 'jiangmiao/auto-pairs' " Complete brackets and quotes
 Plug 'ryanoasis/vim-devicons' " icons in nerdtree and fzf
 Plug 'mechatroner/rainbow_csv' " Syntax highlighting + sql queries on CSV
@@ -97,17 +94,11 @@ Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 Plug 'rakr/vim-two-firewatch'
 Plug 'thenewvu/vim-colors-arthur' 
 
-" All of your Plugins must be added before the following line
 call plug#end()            " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+
+" Base vim options
+" ----------------
 
 set exrc " Enable local vimrc
 set nocompatible
@@ -136,6 +127,44 @@ let mapleader = ","
 set t_Co=256
 set clipboard=unnamedplus " Allow to cp/p from clipboard
 
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
+" Spot nbsp easily
+hi NBSPGroup guibg=LightYellow
+match NBSPGroup / /
+
+" Fold functions/methods
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+set encoding=utf-8
+set termguicolors " enable true colors support
+
+" yml autoindent (??)
+set autoindent sw=4 ts=4 expandtab
+setlocal autoindent sw=4 ts=4 expandtab
+setglobal autoindent sw=4 ts=4 expandtab
+
+autocmd FileType js setlocal shiftwidth=2 tabstop=2
+autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
+
+" highlight lines and columns
+set cursorline
+set cursorcolumn
+
+" mkdir directory automatically
+function! <SID>MkdirsIfNotExists(directory)
+if(!isdirectory(a:directory))
+    call mkdir(a:directory, 'p')
+endif
+endfunction
+autocmd BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
+
+" Basic mapping
+" =============
+
 " easy copy-paste clipboard
 vmap <Leader>y "+y<CR>
 nmap <Leader>p "+p<CR>
@@ -147,49 +176,63 @@ map <Leader>p :bp<cr>
 " Clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>
 
-" mkdir directory automatically
-autocmd BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
-function! <SID>MkdirsIfNotExists(directory)
-if(!isdirectory(a:directory))
-    call mkdir(a:directory, 'p')
-endif
-endfunction
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsListSnippets = '<c-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-" View differently normal spaces and non breakable spaces
-" set list listchars=nbsp:¬
-
-" Tabularize
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>aa :Tabularize /=><CR>
-vmap <Leader>aa :Tabularize /=><CR>
-nmap <Leader>a: :Tabularize /: \zs<CR>
-vmap <Leader>a: :Tabularize /: \zs<CR>
-nmap <Leader>a, :Tabularize /, \zs<CR>
-vmap <Leader>a, :Tabularize /, \zs<CR>
-
-" Git next git conflict
-noremap ]c <Leader>gp
-noremap [c <Leader>gn
-
-" Disable vim-go mapping
-let g:go_def_mapping_enabled = 0
-let g:go_doc_keywordprg_enabled = 0
-
 " easy navigation between words
 nnoremap <C-t> 5j
 vnoremap <C-t> 5j
 nnoremap <C-s> 5k
 vnoremap <C-s> 5k
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+" rm file
+nmap <leader>rm :call delete(expand('%')) \| Bdelete!<CR>
 
+" :q binding
+nmap <Leader>q :q<CR>
+
+" easy save
+nmap <Leader>w :w<CR>
+
+" Fix Ctrl-C as esc
+map <C-c> <Esc>
+ino <C-C> <Esc>
+imap <C-C> <Esc>
+
+" Wrap arguments in array or parenthesis
+nnoremap <silent> <leader><Space> :ArgWrap<CR>
+
+" Custom functions
+" ================
+
+" Allow to pretty print xml file
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
+
+" ?
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -201,70 +244,29 @@ function! s:align()
   endif
 endfunction
 
-" set how far Ctrl-D and Ctrl-U scroll
-set scroll=6
-
-" buffer close
-" nmap <Leader>d :Bdelete<CR>
-
-" list buffers
-nmap <leader>b :ls<CR>:e#
-
-" Function to close all buffers not visible
+" Function to close all non visible buffers
 function! CloseHiddenBuffers()
-let visible = {}
-" for every tab
-for t in range(1, tabpagenr('$'))
-    " and for every window in it
-    for b in tabpagebuflist(t)
-        " this buffer is visible
-        let visible[b] = 1 
+    let visible = {}
+    " for every tab
+    for t in range(1, tabpagenr('$'))
+        " and for every window in it
+        for b in tabpagebuflist(t)
+            " this buffer is visible
+            let visible[b] = 1 
+        endfor
     endfor
-endfor
 
-" for every buffer number
-for b in range(1, bufnr('$'))
-   " if b is a number of invisible buffer, we remove it
-   if bufexists(b) && !has_key(visible, b)
-       execute 'bwipeout' b
-   endif
-endfor
+    " for every buffer number
+    for b in range(1, bufnr('$'))
+       " if b is a number of invisible buffer, we remove it
+       if bufexists(b) && !has_key(visible, b)
+           execute 'bwipeout' b
+       endif
+    endfor
 endfunction
 
-:ca chb :call CloseHiddenBuffers()
-nmap <leader>chb :chb<CR>
-
-" open new tab
-nmap <leader>e :tabnew<CR>
-" next tab
-nmap <leader>en :tabnext<CR>
-" previous tab
-nmap <leader>ep :tabprevious<CR>
-" close tab
-nmap <leader>ec :tabclose<CR>
-
-" rm file
-nmap <leader>rm :call delete(expand('%')) \| Bdelete!<CR>
-
-" :q binding
-nmap <Leader>q :q<CR>
-
-" highlight lines and columns
-set cursorline
-set cursorcolumn
-
-" easy save
-nmap <Leader>w :w<CR>
-
-" yml autoindent
-set autoindent sw=4 ts=4 expandtab
-setlocal autoindent sw=4 ts=4 expandtab
-setglobal autoindent sw=4 ts=4 expandtab
-
-autocmd BufNewFile,BufRead *.njs set filetype=javascript
-
-" file is large from 10mb
-let g:LargeFile = 1024 * 1024 * 10
+" Allow to read large files without making vim go crazy
+let g:LargeFile = 1024 * 1024 * 10 " a file is considered large from 10 MB
 augroup LargeFile 
     autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
@@ -282,136 +284,64 @@ function LargeFile()
     autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
 endfunction
 
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+" Plugin configuration
+" ====================
+
+" Ultisnips
+" ---------
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsListSnippets = '<c-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" Tabularize
+" ----------
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>aa :Tabularize /=><CR>
+vmap <Leader>aa :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /: \zs<CR>
+vmap <Leader>a: :Tabularize /: \zs<CR>
+nmap <Leader>a, :Tabularize /, \zs<CR>
+vmap <Leader>a, :Tabularize /, \zs<CR>
+
+" ?
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+:ca chb :call CloseHiddenBuffers()
+nmap <leader>chb :chb<CR>
+
+" NerdTree
+" --------
 
 " Close vim if only nerdtree open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Fix Ctrl-C as esc
-map <C-c> <Esc>
-ino <C-C> <Esc>
-imap <C-C> <Esc>
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Abolish
+" -------
 
 " Change abolish coerce
 nnoremap f <nop>
 xnoremap f <nop>
 nmap fc  <Plug>Coerce
 
-" Remove this f**king conceal of json quotes!
-let g:vim_json_syntax_conceal = 0
-let g:indentLine_noConcealCursor=""
-set conceallevel=0
-au FileType * setl conceallevel=0 
-let  g:indentLine_conceallevel = 0
+" Prettier
+" --------
 
-
-let g:user_emmet_leader_key='<Tab>'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
-let g:ale_lint_on_text_changed = 'never'
-
-nmap <Leader>m <Plug>(Prettier)
-let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.graphql,*.vue PrettierAsync
 
-autocmd FileType js setlocal shiftwidth=2 tabstop=2
-autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
-
-" Prettier for PHP
-" function PrettierPhpCursor()
-"   let save_pos = getpos(".")
-"   %! prettier --stdin --parser=php
-"   call setpos('.', save_pos)
-" endfunction
-" " define custom command
-" command PrettierPhp call PrettierPhpCursor()
-" " format on save
-" autocmd BufwritePre *.php PrettierPhp
-
-" fix syntax hl for ejs files
-au BufNewFile,BufRead *.ejs set filetype=html
-
-" Lightline configuration
-set noshowmode " we remove the -- INSERTION -- which is useless now because of lightline
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ }
+" PHPActor
+" --------
 
 " Autocompletion phpactor
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
-nmap <C-p> <Esc>:FzfLua files<CR>
-nmap <C-o> <Esc>:FzfLua buffers<CR>
-nmap <C-h> <Esc>:FzfLua command_history<CR>
-nmap <C-w> <Esc>:FzfLua builtin<CR>
-nmap <Leader>f :FzfLua live_grep_native<CR>
-
-" Fold functions/methods
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
-
-set encoding=utf-8
-
-" Project root is discovered thanks to these files automatically
-let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
-
-" PHP
-let g:vdebug_keymap = {
-\    "run" : "<Leader>r",
-\    "run_to_cursor" : "<Up>",
-\    "step_over" : "<Down>",
-\    "step_into" : "<Right>",
-\    "step_out" : "<Left>",
-\    "close" : "q",
-\    "detach" : "<F7>",
-\    "set_breakpoint" : "<Leader>s",
-\    "eval_visual" : "<Leader>e"
-\}
-
-" Allows Vdebug to bind to all interfaces.
-let g:vdebug_options = {}
-
-" Stops execution at the first line.
-let g:vdebug_options['break_on_open'] = 1
-let g:vdebug_options['max_children'] = 128
-
-" Use the compact window layout.
-let g:vdebug_options['watch_window_style'] = 'compact'
-
-" Because it's the company default.
-let g:vdebug_options['ide_key'] = 'PHPSTORM'
-
-" Need to set as empty for this to work with Vagrant boxes.
-let g:vdebug_options['server'] = ""
-
-let g:vdebug_options['port'] = 9003 
-
-" let g:vdebug_options['path_maps'] = {'/app': getcwd()}
 
 nmap <Leader>u :call phpactor#UseAdd()<CR>
 
@@ -452,8 +382,59 @@ nmap <Leader>ci :call CreatePHPClass("interface")<CR>
 " Generate a default new PHP trait (replacing the current file)
 nmap <Leader>ct :call CreatePHPClass("trait")<CR>
 
-" Color brackets automatically
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+" fzf-lua
+" -------
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+nmap <C-p> <Esc>:FzfLua files<CR>
+nmap <C-o> <Esc>:FzfLua buffers<CR>
+nmap <C-h> <Esc>:FzfLua command_history<CR>
+nmap <C-w> <Esc>:FzfLua builtin<CR>
+nmap <Leader>f :FzfLua live_grep_native<CR>
+
+" vim-projectroot
+" --------------
+
+" Project root is discovered thanks to these files automatically
+let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
+
+" Vdebug
+" ------
+
+let g:vdebug_keymap = {
+\    "run" : "<Leader>r",
+\    "run_to_cursor" : "<Up>",
+\    "step_over" : "<Down>",
+\    "step_into" : "<Right>",
+\    "step_out" : "<Left>",
+\    "close" : "q",
+\    "detach" : "<F7>",
+\    "set_breakpoint" : "<Leader>s",
+\    "eval_visual" : "<Leader>e"
+\}
+
+" Allows Vdebug to bind to all interfaces.
+let g:vdebug_options = {}
+
+" Stops execution at the first line.
+let g:vdebug_options['break_on_open'] = 1
+let g:vdebug_options['max_children'] = 128
+
+" Use the compact window layout.
+let g:vdebug_options['watch_window_style'] = 'compact'
+
+" Because it's the company default.
+let g:vdebug_options['ide_key'] = 'PHPSTORM'
+
+" Need to set as empty for this to work with Vagrant boxes.
+let g:vdebug_options['server'] = ""
+
+let g:vdebug_options['port'] = 9003 
+
+" let g:vdebug_options['path_maps'] = {'/app': getcwd()}
+
+" Syntastic
+" ---------
 
 " Syntastic configuration
 let g:syntastic_always_populate_loc_list = 1
@@ -474,121 +455,94 @@ let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C01
 " Disable syntastic for twig
 let g:syntastic_filetype_map = { 'html.twig': 'twig' }
 
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
+" close syntastic when bdelete the buffer
+nmap <Leader>d :lclose<CR>:Bdelete<CR>
+" ?
+cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
 
-nnoremap <silent> <leader><Space> :ArgWrap<CR>
+" Set smaller height for syntastic 
+let g:syntastic_loc_list_height = 5
 
-set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
-" colorscheme ayu
 
-" autocompletion for python
-let g:deoplete#enable_at_startup = 1
-" automatically close deoplete popup when used the term
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" Rainbow
+" -------
 
-" disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 0
+" Color brackets automatically
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+" Black
+" -----
 
-" configure vim jedi
-let g:jedi#goto_command = "<C-k>"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
-
+" Path to black executable
 let g:black_virtualenv = "/home/einenlum/.local/pipx/venvs/black"
 
 " Execute black on every save
 autocmd BufWritePre *.py execute ':Black'
 
-" close syntastic when bdelete the buffer
-nmap <Leader>d :lclose<CR>:Bdelete<CR>
-" nnoremap <silent> <C-d> :lclose<CR>:bdelete<CR>
-cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
 
-nnoremap <BS> <C-^>
+" HOP
+" ---
 
-" Set smaller height for syntastic 
-let g:syntastic_loc_list_height = 5
-
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-
-" Hop config
 lua require'hop'.setup()
 nnoremap è :HopWord<CR>
 
+" ?
 nnoremap j <NOP>
+" ?
 nnoremap k <NOP>
 nnoremap <C-m> <NOP>
+
+" Lightspeed
+" ---------
+
+" After the cursor
 map <C-d> <Plug>Lightspeed_s
+" Before the cursor
 map <C-k> <Plug>Lightspeed_S
-noremap gm :GitBlameToggle<CR>
 
-lua require('lualine').setup()
-
-" Where am I?
-lua require("gps-config")
+" Git blame
+" ---------
 
 " Disable git blame by default
 let g:gitblame_enabled = 0
 let g:gitblame_message_template = '<summary> • <sha> • <date> • <author>'
 let g:gitblame_print_virtual_text = 0
-" Time in milliseconds (default 0)
+noremap gm :GitBlameToggle<CR>
+
+" Lualine
+" -------
+
+lua require('lualine').setup()
+
+" GPS
+" ---
+
+lua require("gps-config")
+
+" illuminate
+" ----------
+
+"" Time in milliseconds (default 0)
+" before it highlights similar words
 let g:Illuminate_delay = 700
 
-" nmap <nowait> c
-" nmap <nowait> r
-" nmap cr <NOP>
-" nmap rc <NOP>
-" nmap cc <NOP>
+" Copilot
+" -------------
 
-" Copilot config
+" Replace Tab with Ctrl + s (to avoid conflicts with Vim's Tab and phpactor)
 imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
+
+" Nord
+" ----
 
 let g:nord_italic = 1
 let g:nord_underline = 1
 let g:nord_italic_comments = 1
 
+" Default Colorscheme
+
 colorscheme nord
 hi Comment guifg=#949990
 
-" Spot nbsp easily
-hi NBSPGroup guibg=LightYellow
-match NBSPGroup / /
