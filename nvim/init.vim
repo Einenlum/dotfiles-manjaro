@@ -588,3 +588,7 @@ let g:nord_italic_comments = 1
 
 colorscheme nord
 hi Comment guifg=#949990
+
+" Spot nbsp easily
+hi NBSPGroup guibg=LightYellow
+match NBSPGroup / /
