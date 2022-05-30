@@ -149,3 +149,6 @@ ln -sf $dotfiles_dir/rofi/theme/custom_style.rasi ~/.config/rofi/launchers/text/
 
 # Install poetry
 curl -sSL https://install.python-poetry.org | python3 -
+
+# Add Natural Scrolling in libinput conf
+sudo sed -i '/Identifier "libinput touchpad catchall"/a \ \ \ \ \ \ \ \ Option "NaturalScrolling" "True"' /usr/share/X11/xorg.conf.d/40-libinput.conf
