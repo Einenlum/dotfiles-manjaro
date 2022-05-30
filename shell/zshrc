@@ -172,4 +172,8 @@ searchgit() {
 
 source /home/einenlum/.config/broot/launcher/bash/br
 
+# Add fzf bindings
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 eval "$(zoxide init zsh)"
