@@ -56,6 +56,8 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo usermod -aG wheel $USER
 sudo usermod -aG video $USER
+# Add docker on startup
+sudo systemctl enable --now docker
 
 # Install psysh
 wget https://psysh.org/psysh
