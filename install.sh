@@ -29,6 +29,7 @@ sudo pamac install --no-confirm \
     neovim \
     nitrogen \
     nodejs \
+    noto-fonts-emoji \ # Support emojis
     npm \
     pcmanfm \
     p7zip \
@@ -37,6 +38,7 @@ sudo pamac install --no-confirm \
     ripgrep \
     rofi \
     ruby \
+    ttf-fira-code \
     tmux \
     unrar \
     unzip \
