@@ -31,9 +31,10 @@ sudo pamac install --no-confirm \
     nodejs \
     noto-fonts-emoji \
     npm \
-    pcmanfm \
     p7zip \
+    pcmanfm \
     php \
+    postgresql \
     python-pip \
     ripgrep \
     rofi \
