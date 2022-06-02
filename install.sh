@@ -29,7 +29,7 @@ sudo pamac install --no-confirm \
     neovim \
     nitrogen \
     nodejs \
-    noto-fonts-emoji \ # Support emojis
+    noto-fonts-emoji \
     npm \
     pcmanfm \
     p7zip \
