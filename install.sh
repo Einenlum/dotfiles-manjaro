@@ -52,6 +52,7 @@ sudo pamac install --no-confirm \
 yay ruby-neovim # need to find a way to automate this (with no confirm)
 yay sublime-text-4
 yay visual-studio-code-bin # uses the proprietary version instead of the openvsx one
+yay insomnia-bin
 sudo pip install neovim
 sudo pip3 install neovim
 sudo groupadd docker
