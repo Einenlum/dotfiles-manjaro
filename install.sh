@@ -95,6 +95,8 @@ ln -sf $dotfiles_dir/prog/prettierrc ~/.prettierrc
 ln -sf $dotfiles_dir/phpactor ~/.config/phpactor
 mkdir -p ~/.config/i3 && ln -sf $dotfiles_dir/i3/config ~/.config/i3/config
 ln -sf $dotfiles_dir/i3/i3status.conf ~/.i3status.conf
+mkdir -p ~/.config/kitty
+ln -sf $dotfiles_dir/shell/kitty.conf ~/.config/kitty/kitty.conf
 
 mkdir -p ~/.config/nvim/backup
 
