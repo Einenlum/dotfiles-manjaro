@@ -44,6 +44,7 @@ Plug 'thenewvu/vim-colors-arthur'
 Plug 'AlessandroYorba/Alduin'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'wadackel/vim-dogrun'
 
 " Language
 " =========
