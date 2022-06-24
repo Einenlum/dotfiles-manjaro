@@ -216,6 +216,12 @@ nmap <Leader>q :q<CR>
 " easy save
 nmap <Leader>w :w<CR>
 
+" edit vimrc
+nmap <Leader>ae :e $MYVIMRC<CR>
+
+" source vimrc
+nmap <Leader>as :source $MYVIMRC<CR>
+
 " Fix Ctrl-C as esc
 map <C-c> <Esc>
 ino <C-C> <Esc>
