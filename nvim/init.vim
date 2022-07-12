@@ -45,6 +45,8 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'wadackel/vim-dogrun'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'rockerBOO/boo-colorscheme-nvim'
 
 " Language
 " =========
@@ -560,6 +562,10 @@ let g:Illuminate_delay = 700
 imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
+" Boo
+" ___
+
+let g:boo_colorscheme_theme = 'crimson_moonlight'
 
 " Nord
 " ----
@@ -569,9 +575,9 @@ let g:nord_underline = 1
 let g:nord_italic_comments = 1
 
 " Default Colorscheme
+" ___________
 
 colorscheme nord
 
 " Most dark colorschemes print comments in a very unreadable way.
 hi Comment guifg=#949990
-
