@@ -3,5 +3,10 @@ code_transform.class_new.variants:
     "trait": trait
     "strict-class": strict-class
 
-    # worse_reflection.stub_dir: "/tmp/frbit-dashboard/vendor/ide-test"
-rpc.store_replay: true
+indexer.exclude_patterns:
+  # Default
+  - "\/vendor\/**\/Tests\/**\/*"
+  - "\/vendor\/**\/tests\/**\/*"
+  - "\/vendor\/composer\/**\/*"
+  # Custom
+  - "\/var\/cache\/**\/*"
