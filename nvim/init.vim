@@ -47,6 +47,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'wadackel/vim-dogrun'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'rockerBOO/boo-colorscheme-nvim'
+Plug 'joshdick/onedark.vim'
 
 " Language
 " =========
