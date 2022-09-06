@@ -156,6 +156,8 @@ set background=dark
 let mapleader = ","
 set t_Co=256
 set clipboard=unnamedplus " Allow to cp/p from clipboard
+" Avoid using spaces instead of tabs in makefiles
+autocmd FileType make setlocal noexpandtab
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
