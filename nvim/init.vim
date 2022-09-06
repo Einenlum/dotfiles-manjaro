@@ -83,6 +83,7 @@ Plug 'vim-syntastic/syntastic'
 " ===
 Plug 'tpope/vim-fugitive' " add git integration
 Plug 'f-person/git-blame.nvim' " See git blame info
+Plug 'shumphrey/fugitive-gitlab.vim' " add gitlab integration (especially for GBrowse)
 
 " Vim menu and behavior
 " =====================
@@ -321,6 +322,10 @@ endfunction
 
 " Plugin configuration
 " ====================
+
+" Fugitive
+" --------
+let g:fugitive_gitlab_domains = ['gitlab.cloud-grdf.fr']
 
 " Ultisnips
 " ---------
