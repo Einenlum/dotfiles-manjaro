@@ -9,8 +9,8 @@
     frebase = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1\"^\"}' | xargs -o git rebase --autostash -i; }; f"
     # Select a branch from your recent used ones
     fco = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf | sed 's/remotes\\/origin\\///' | xargs -o git checkout; }; f"
-    # Delete a branch from your recent used ones
-    fd = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf | sed 's/remotes\\/origin\\///' | xargs -o git br -D; }; f"
+    # Delete branches from your recent used ones
+    fd = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf -m | sed 's/remotes\\/origin\\///' | xargs -o git br -D; }; f"
     # Show a commit
     fs = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1\"^\"}' | xargs -o git show; }; f"
 [user]
@@ -52,8 +52,10 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
-    syntax-theme = Github
+    # syntax-theme = default
 [merge]
 	tool = meld
 [mergetool]
 	keepBackup = false
+[credential]
+	helper = store
