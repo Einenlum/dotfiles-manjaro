@@ -41,3 +41,5 @@ map("i", "<C-c>", "<Esc>", {})
 
 -- Wrap arguments in array or parenthesis
 map("n", "<leader><Space>", ":ArgWrap<CR>", {noremap=true, silent=true})
+
+require('einenlum.bindings.nerdtree')

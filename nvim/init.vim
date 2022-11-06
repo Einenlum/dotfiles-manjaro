@@ -183,9 +183,6 @@ nmap <leader>chb :chb<CR>
 " Close vim if only nerdtree open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
-
 " Abolish
 " -------
 
