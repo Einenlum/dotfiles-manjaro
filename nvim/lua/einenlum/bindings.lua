@@ -8,6 +8,9 @@ map("n", "<Leader>p", "\"+p<CR>", {})
 map("n", "<Leader>n", ":bn<CR>", {})
 map("n", "<Leader>p", ":bp<CR>", {})
 
+-- force closing buffer without saving
+map("n", "<Leader>D", ":bd!<CR>", {})
+
 -- Clear search highlight
 map("n", "<Leader>/", ":let @/=\"\"<CR>", {silent = true})
 
@@ -39,7 +42,15 @@ map("", "<C-c>", "<Esc>", {})
 map("i", "<C-c>", "<Esc>", {noremap=true})
 map("i", "<C-c>", "<Esc>", {})
 
+-- Map esc and ctrl c to leave terminal mode
+map("t", "<Esc>", "<C-\\><C-n>", {noremap=true})
+map("t", "<C-c>", "<C-\\><C-n>", {noremap=true})
+
 -- Wrap arguments in array or parenthesis
 map("n", "<leader><Space>", ":ArgWrap<CR>", {noremap=true, silent=true})
 
 require('einenlum.bindings.nerdtree')
+require('einenlum.bindings.fzf')
+require('einenlum.bindings.lightspeed')
+require('einenlum.bindings.hop')
+require('einenlum.bindings.syntastic')

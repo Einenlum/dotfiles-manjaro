@@ -21,3 +21,4 @@ vim.opt.ruler = true
 vim.opt.background=dark
 vim.g.mapleader = ","
 vim.opt.clipboard="unnamedplus" -- Allow to cp/p from clipboard
+vim.opt.guifont="Fira_Code:h6"

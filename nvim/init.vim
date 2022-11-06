@@ -8,15 +8,11 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Not sure why. Let's test without it.
-" filetype off " required
-"
-" Look
-" ====
-set guifont=Fira_Code:h6.5
-
+" All the magic is in there
 lua require('einenlum')
 
+" Not sure why. Let's test without it.
+" filetype off " required
 
 " Base vim options
 " ----------------
@@ -147,29 +143,8 @@ endfunction
 " Plugin configuration
 " ====================
 
-" Fugitive
-" --------
-let g:fugitive_gitlab_domains = ['gitlab.cloud-grdf.fr']
-
-" Ultisnips
-" ---------
-
-let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsListSnippets = '<c-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
 " Tabularize
 " ----------
-
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>aa :Tabularize /=><CR>
-vmap <Leader>aa :Tabularize /=><CR>
-nmap <Leader>a: :Tabularize /: \zs<CR>
-vmap <Leader>a: :Tabularize /: \zs<CR>
-nmap <Leader>a, :Tabularize /, \zs<CR>
-vmap <Leader>a, :Tabularize /, \zs<CR>
 
 " ?
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -181,7 +156,7 @@ nmap <leader>chb :chb<CR>
 " --------
 
 " Close vim if only nerdtree open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Abolish
 " -------
@@ -190,11 +165,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " nnoremap f <nop>
 " xnoremap f <nop>
 " nmap fc  <Plug>Coerce
-
-" Prettier
-" --------
-
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.graphql,*.vue PrettierAsync
 
 " PHPActor
 " --------
@@ -246,23 +216,6 @@ autocmd FileType php nmap <buffer> <Leader>ct :call CreatePHPClass("trait")<CR>
 " -------
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-nmap <C-p> <Esc>:FzfLua files<CR>
-nmap <C-o> <Esc>:FzfLua buffers<CR>
-nmap <C-h> <Esc>:FzfLua command_history<CR>
-nmap <C-w> <Esc>:FzfLua builtin<CR>
-nmap <Leader>f :FzfLua live_grep_native<CR>
-
-" Rust lsp
-" --------
-lua require("mason").setup()
-lua require("mason-lspconfig").setup()
-lua require("rusty-config")
-
-" vim-projectroot
-" --------------
-
-" Project root is discovered thanks to these files automatically
-let g:rootmarkers = ['.projectroot', 'docker-compose.yml', '.git']
 
 " Vdebug
 " ------
@@ -302,35 +255,8 @@ let g:vdebug_options['port'] = 9003
 " Syntastic
 " ---------
 
-" Syntastic configuration
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" Syntastic configuration for PHP
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_exec = './vendor/bin/phpcs'
-let g:syntastic_php_phpcs_args = '--standard=psr12'
-
-" Syntastic configuration for Python
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = "--load-plugins pylint_django --disable=C0111"
-
-" Disable syntastic for twig
-let g:syntastic_filetype_map = { 'html.twig': 'twig' }
-
-" close syntastic when bdelete the buffer
-nmap <Leader>d :lclose<CR>:Bdelete<CR>
-
-" force closing buffer without saving
-nmap <Leader>D :bd!<CR>
 " ?
 cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
-
-" Set smaller height for syntastic 
-let g:syntastic_loc_list_height = 5
 
 
 " Rainbow
@@ -339,64 +265,14 @@ let g:syntastic_loc_list_height = 5
 " Color brackets automatically
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
-" Black
-" -----
-
-" Path to black executable
-let g:black_virtualenv = "/home/einenlum/.local/pipx/venvs/black"
-
-" Execute black on every save
-autocmd BufWritePre *.py execute ':Black'
-
-
-" HOP
-" ---
-
-lua require'hop'.setup()
-nnoremap è :HopWord<CR>
-nnoremap <C-m> <NOP>
-
-" Lightspeed
-" ---------
-
-" After the cursor
-map <C-d> <Plug>Lightspeed_s
-" Before the cursor
-map <C-k> <Plug>Lightspeed_S
-
-" Terminal
-" --------
-
-" Map esc and ctrl c to leave terminal mode
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-c> <C-\><C-n>
-
 
 " Git blame
 " ---------
 
-" Disable git blame by default
-let g:gitblame_enabled = 0
-let g:gitblame_message_template = '<summary> • <sha> • <date> • <author>'
-let g:gitblame_print_virtual_text = 0
 noremap gm :GitBlameToggle<CR>
-
-" Lualine
-" -------
-
-lua require('lualine').setup()
-
-" GPS
-" ---
-
-lua require("gps-config")
 
 " illuminate
 " ----------
-
-"" Time in milliseconds (default 0)
-" before it highlights similar words
-let g:Illuminate_delay = 700
 
 " Copilot
 " -------------
@@ -407,8 +283,3 @@ let g:copilot_no_tab_map = v:true
 let g:copilot_filetypes = {
     \   'sh': v:false,
     \ }
-
-" Boo
-" ___
-
-let g:boo_colorscheme_theme = 'crimson_moonlight'
