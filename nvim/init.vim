@@ -21,34 +21,6 @@ lua require('einenlum')
 " Base vim options
 " ----------------
 
-set exrc " Enable local vimrc
-set nocompatible
-set hidden
-set wildmenu
-set wildmode=list:longest
-set wildignorecase " :e is now case insensitive
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-set backupdir =~/.config/nvim/backup
-set wrap
-set scrolloff=5
-set title
-set visualbell
-set showmode
-" absolute number line mode
-" set number
-set number relativenumber " hybrid relative num line
-set expandtab
-set shiftwidth=4
-set ruler
-set background=dark
-let mapleader = ","
-set t_Co=256
-set clipboard=unnamedplus " Allow to cp/p from clipboard
 " Avoid using spaces instead of tabs in makefiles
 autocmd FileType make setlocal noexpandtab
 

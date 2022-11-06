@@ -40,6 +40,8 @@ Plug 'kvrohit/rasmus.nvim'
 
 -- Language
 -- =========
+-- Help debug in lua
+Plug 'kikito/inspect.lua'
 
 -- Autocompletion
 -- --------------
