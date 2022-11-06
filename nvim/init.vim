@@ -10,121 +10,12 @@ endif
 
 " Not sure why. Let's test without it.
 " filetype off " required
-
-call plug#begin()
-
+"
 " Look
 " ====
+set guifont=Fira_Code:h6.5
 
-" Start
-" -----
-Plug 'mhinz/vim-startify' " Nice start menu in vim
-
-" Icons
-" -----
-Plug 'kyazdani42/nvim-web-devicons' " icons for status line
-Plug 'ryanoasis/vim-devicons' " icons in nerdtree and fzf
-
-" Colors
-" ------
-Plug 'chrisbra/Colorizer' " show colors after hexadecimal codes
-
-" Colorschemes
-" ------------
-Plug 'jacoborus/tender.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
-Plug 'romainl/flattened' " solarized
-Plug 'sts10/vim-pink-moon'
-Plug 'glepnir/oceanic-material'
-Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
-Plug 'rakr/vim-two-firewatch'
-Plug 'thenewvu/vim-colors-arthur' 
-Plug 'AlessandroYorba/Alduin'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'wadackel/vim-dogrun'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'rockerBOO/boo-colorscheme-nvim'
-Plug 'joshdick/onedark.vim'
-
-" Language
-" =========
-
-" Autocompletion
-" --------------
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp' " Dependency of ncm2
-Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
-Plug 'phpactor/ncm2-phpactor'
-Plug 'github/copilot.vim' " Test github copilot
-
-" Formatting
-" ----------
-Plug 'psf/black', { 'tag': '19.10b0' } " autoformat code for python
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'graphql', 'vue'] }
-
-" Snippets
-" --------
-Plug 'SirVer/ultisnips' " Snippets
-
-" Debugging
-" ----------
-Plug 'joonty/vdebug' " xdebug
-
-" Linting
-" --------
-Plug 'vim-syntastic/syntastic'
-
-" Git
-" ===
-Plug 'tpope/vim-fugitive' " add git integration
-Plug 'f-person/git-blame.nvim' " See git blame info
-Plug 'shumphrey/fugitive-gitlab.vim' " add gitlab integration (especially for GBrowse)
-
-" Vim menu and behavior
-" =====================
-
-Plug 'ibhagwan/fzf-lua' " Add fzf menu
-Plug 'sjbach/lusty' " Lusty explorer, allows ,lr and ,lf to navigate between files
-Plug 'bling/vim-bufferline' " Display a line of buffers
-Plug 'nvim-lualine/lualine.nvim' " status line
-Plug 'scrooloose/nerdtree'
-Plug 'dbakker/vim-projectroot' " Helps for vdebug: change config depending on the root dir
-Plug 'moll/vim-bbye' " Close a buffer without messing up the layout
-Plug 'editorconfig/editorconfig-vim' " Use editorconfig file
-
-" Code navigation
-" ----------------
-Plug 'Einenlum/yaml-revealer' " Display and search in yaml files
-Plug 'tmhedberg/SimpylFold' " Help folding in Python
-Plug 'stephpy/vim-yaml' " Avoid slowliness with yaml files (is it still useful?)
-Plug 'luochen1990/rainbow' " Colors brackets according to levels
-Plug 'mechatroner/rainbow_csv' " Syntax highlighting + sql queries on CSV
-Plug 'phaazon/hop.nvim' " Easy motions 1
-Plug 'ggandor/lightspeed.nvim' " Easy motions 2
-Plug 'RRethy/vim-illuminate' " highlight keywords and values when staying on them
-" Supposted to help plugins with signature help. Is it still needed?
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " TSUpdate updates all the parsers
-Plug 'SmiteshP/nvim-gps' " Where am I in the file?
-
-" Code manipulation
-" -----------------
-Plug 'FooSoft/vim-argwrap' " multi-line single line function
-Plug 'godlygeek/tabular' " Allows to align things with :Tabularize
-Plug 'tpope/vim-commentary' " Easy comment with gc
-Plug 'tpope/vim-abolish' " Search and substitute words respecting case
-Plug 'jiangmiao/auto-pairs' " Complete brackets and quotes
-
-" File manipulation
-" -----------------
-Plug 'vim-scripts/Rename' " Rename the file in buffer
-
-call plug#end()            " required
+lua require('einenlum')
 
 
 " Base vim options
@@ -148,7 +39,9 @@ set scrolloff=5
 set title
 set visualbell
 set showmode
-set number
+" absolute number line mode
+" set number
+set number relativenumber " hybrid relative num line
 set expandtab
 set shiftwidth=4
 set ruler
@@ -219,6 +112,7 @@ nmap <leader>rm :call delete(expand('%')) \| Bdelete!<CR>
 
 " :q binding
 nmap <Leader>q :q<CR>
+nmap <Leader>Q :q!<CR>
 
 " easy save
 nmap <Leader>w :w<CR>
@@ -368,9 +262,9 @@ map <C-n> :NERDTreeToggle<CR>
 " -------
 
 " Change abolish coerce
-nnoremap f <nop>
-xnoremap f <nop>
-nmap fc  <Plug>Coerce
+" nnoremap f <nop>
+" xnoremap f <nop>
+" nmap fc  <Plug>Coerce
 
 " Prettier
 " --------
@@ -385,44 +279,43 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.graphql,*.vue PrettierAsync
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
-nmap <Leader>u :call phpactor#UseAdd()<CR>
-
+autocmd FileType php nmap <buffer> <Leader>u :call phpactor#UseAdd()<CR>
 " Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+autocmd FileType php nmap <buffer> <Leader>mm :call phpactor#ContextMenu()<CR>
 
 " Invoke the navigation menu
-nmap <Leader>an :call phpactor#Navigate()<CR>
+autocmd FileType php nmap <buffer> <Leader>an :call phpactor#Navigate()<CR>
 
 " Goto definition of class or class member under the cursor
-nmap <Leader>gt :call phpactor#GotoDefinition()<CR>
+autocmd FileType php nmap <buffer> <Leader>gt :call phpactor#GotoDefinition()<CR>
 
 " Show brief information about the symbol under the cursor
-nmap <Leader>K :call phpactor#Hover()<CR>
+autocmd FileType php nmap <buffer> <Leader>K :call phpactor#Hover()<CR>
 
 " Transform the classes in the current file
-nmap <Leader>tt :call phpactor#Transform()<CR>
+autocmd FileType php nmap <buffer> <Leader>tt :call phpactor#Transform()<CR>
 
 " Extract expression (normal mode)
-nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+autocmd FileType php nmap <buffer> <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
 
 " Extract expression from selection
-vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+autocmd FileType php vmap <buffer> <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
 
 " Extract method from selection
-vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+autocmd FileType php vmap <buffer> <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 function! CreatePHPClass(variantName)
     call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite_existing": 1 })
 endfunction
 
 " Generate a default new PHP class (replacing the current file)
-nmap <Leader>cc :call CreatePHPClass("strict-class")<CR>
+autocmd FileType php nmap <buffer> <Leader>cc :call CreatePHPClass("strict-class")<CR>
 
 " Generate a default new PHP interface (replacing the current file)
-nmap <Leader>ci :call CreatePHPClass("interface")<CR>
+autocmd FileType php nmap <buffer> <Leader>ci :call CreatePHPClass("interface")<CR>
 
 " Generate a default new PHP trait (replacing the current file)
-nmap <Leader>ct :call CreatePHPClass("trait")<CR>
+autocmd FileType php nmap <buffer> <Leader>ct :call CreatePHPClass("trait")<CR>
 
 " fzf-lua
 " -------
@@ -433,6 +326,12 @@ nmap <C-o> <Esc>:FzfLua buffers<CR>
 nmap <C-h> <Esc>:FzfLua command_history<CR>
 nmap <C-w> <Esc>:FzfLua builtin<CR>
 nmap <Leader>f :FzfLua live_grep_native<CR>
+
+" Rust lsp
+" --------
+lua require("mason").setup()
+lua require("mason-lspconfig").setup()
+lua require("rusty-config")
 
 " vim-projectroot
 " --------------
@@ -499,6 +398,9 @@ let g:syntastic_filetype_map = { 'html.twig': 'twig' }
 
 " close syntastic when bdelete the buffer
 nmap <Leader>d :lclose<CR>:Bdelete<CR>
+
+" force closing buffer without saving
+nmap <Leader>D :bd!<CR>
 " ?
 cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete' : 'bd')<CR>
 
@@ -537,6 +439,14 @@ map <C-d> <Plug>Lightspeed_s
 " Before the cursor
 map <C-k> <Plug>Lightspeed_S
 
+" Terminal
+" --------
+
+" Map esc and ctrl c to leave terminal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-c> <C-\><C-n>
+
+
 " Git blame
 " ---------
 
@@ -569,6 +479,9 @@ let g:Illuminate_delay = 700
 " Replace Tab with Ctrl + s (to avoid conflicts with Vim's Tab and phpactor)
 imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+let g:copilot_filetypes = {
+    \   'sh': v:false,
+    \ }
 
 " Boo
 " ___
