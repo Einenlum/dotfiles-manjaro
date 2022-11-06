@@ -1,4 +1,5 @@
 require('einenlum.neovide')
 require('einenlum.plug')
 require('einenlum.set')
+require('einenlum.bindings')
 require('einenlum.colors')

@@ -59,50 +59,6 @@ function! <SID>MkdirsIfNotExists(directory)
 endfunction
 autocmd BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
 
-" Basic mapping
-" =============
-
-" easy copy-paste clipboard
-vmap <Leader>y "+y<CR>
-nmap <Leader>p "+p<CR>
-
-" buffer management
-map <Leader>n :bn<cr>
-map <Leader>p :bp<cr>
-
-" Clear search highlight
-nmap <silent> <leader>/ :let @/=""<cr>
-
-" easy navigation between words
-nnoremap <C-t> 5j
-vnoremap <C-t> 5j
-nnoremap <C-s> 5k
-vnoremap <C-s> 5k
-
-" rm file
-nmap <leader>rm :call delete(expand('%')) \| Bdelete!<CR>
-
-" :q binding
-nmap <Leader>q :q<CR>
-nmap <Leader>Q :q!<CR>
-
-" easy save
-nmap <Leader>w :w<CR>
-
-" edit vimrc
-nmap <Leader>ae :e $MYVIMRC<CR>
-
-" source vimrc
-nmap <Leader>as :source $MYVIMRC<CR>
-
-" Fix Ctrl-C as esc
-map <C-c> <Esc>
-ino <C-C> <Esc>
-imap <C-C> <Esc>
-
-" Wrap arguments in array or parenthesis
-nnoremap <silent> <leader><Space> :ArgWrap<CR>
-
 " Custom functions
 " ================
 
