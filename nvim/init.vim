@@ -459,18 +459,3 @@ let g:copilot_filetypes = {
 " ___
 
 let g:boo_colorscheme_theme = 'crimson_moonlight'
-
-" Nord
-" ----
-
-let g:nord_italic = 1
-let g:nord_underline = 1
-let g:nord_italic_comments = 1
-
-" Default Colorscheme
-" ___________
-
-colorscheme nord
-
-" Most dark colorschemes print comments in a very unreadable way.
-hi Comment guifg=#949990
