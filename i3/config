@@ -163,8 +163,8 @@ client.focused          #4D716D #37505D #FFFFFF #2E9EF4   #285577
 # Shortcuts
 # Starts firefox
 bindsym $mod+Shift+f exec firefox
-# Starts chromium-browser
-bindsym $mod+Shift+c exec chromium
+# Starts brave
+bindsym $mod+Shift+c exec brave
 # xfce4-notify
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 
