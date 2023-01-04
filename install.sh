@@ -40,6 +40,8 @@ sudo pamac install --no-confirm \
     rofi \
     ruby \
     ttf-fira-code \
+    ttf-jetbrains-mono \
+    ttf-roboto-mono \
     tmux \
     unrar \
     unzip \
