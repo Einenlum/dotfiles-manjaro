@@ -61,6 +61,10 @@ export PATH=~/.config/composer/vendor/bin:$PATH
 export PATH=~/.bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.poetry/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
+export PATH=~/.local/share/nvim/plugged/phpactor/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+
 
 # eval "$(phpenv init -)"
 
@@ -129,8 +133,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.phpstorm/bin"
 # export PATH="$PATH:$HOME/anaconda3/bin"
-
-export GOPATH="$HOME/Prog/go"
 
 # Use fd instead of default fzf (for speed and gitignore)
 # --files: List files that would be searched but do not search
