@@ -18,6 +18,7 @@
 	name = Yann Rabiller
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
     excludesfile = ~/.gitignore
     pager = delta
