@@ -20,20 +20,9 @@ lua require('einenlum')
 " Avoid using spaces instead of tabs in makefiles
 autocmd FileType make setlocal noexpandtab
 
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-
 " Spot nbsp easily
 hi NBSPGroup guibg=LightYellow
 match NBSPGroup / /
-
-" Fold functions/methods
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
-
-set encoding=utf-8
-set termguicolors " enable true colors support
 
 " yml autoindent (??)
 set autoindent sw=4 ts=4 expandtab
@@ -42,10 +31,6 @@ setglobal autoindent sw=4 ts=4 expandtab
 
 autocmd FileType js setlocal shiftwidth=2 tabstop=2
 autocmd FileType jsx setlocal shiftwidth=2 tabstop=2
-
-" highlight lines and columns
-set cursorline
-set cursorcolumn
 
 " mkdir directory automatically
 function! <SID>MkdirsIfNotExists(directory)
@@ -166,51 +151,11 @@ nmap <leader>chb :chb<CR>
 " xnoremap f <nop>
 " nmap fc  <Plug>Coerce
 
-" PHPActor
-" --------
-
 " Autocompletion phpactor
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
-autocmd FileType php nmap <buffer> <Leader>u :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-autocmd FileType php nmap <buffer> <Leader>mm :call phpactor#ContextMenu()<CR>
-
-" Invoke the navigation menu
-autocmd FileType php nmap <buffer> <Leader>an :call phpactor#Navigate()<CR>
-
-" Goto definition of class or class member under the cursor
-autocmd FileType php nmap <buffer> <Leader>gt :call phpactor#GotoDefinition()<CR>
-
-" Show brief information about the symbol under the cursor
-autocmd FileType php nmap <buffer> <Leader>K :call phpactor#Hover()<CR>
-
-" Transform the classes in the current file
-autocmd FileType php nmap <buffer> <Leader>tt :call phpactor#Transform()<CR>
-
-" Extract expression (normal mode)
-autocmd FileType php nmap <buffer> <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-
-" Extract expression from selection
-autocmd FileType php vmap <buffer> <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-
-" Extract method from selection
-autocmd FileType php vmap <buffer> <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
-
-function! CreatePHPClass(variantName)
-    call phpactor#rpc("class_new", { "current_path": phpactor#_path(), "variant": a:variantName, "new_path": phpactor#_path(), "overwrite_existing": 1 })
-endfunction
-
-" Generate a default new PHP class (replacing the current file)
-autocmd FileType php nmap <buffer> <Leader>cc :call CreatePHPClass("strict-class")<CR>
-
-" Generate a default new PHP interface (replacing the current file)
-autocmd FileType php nmap <buffer> <Leader>ci :call CreatePHPClass("interface")<CR>
-
-" Generate a default new PHP trait (replacing the current file)
-autocmd FileType php nmap <buffer> <Leader>ct :call CreatePHPClass("trait")<CR>
 
 " fzf-lua
 " -------

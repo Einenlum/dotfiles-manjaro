@@ -8,7 +8,7 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.laststatus=2
-vim.opt.backupdir = "~/.config/nvim/backup"
+vim.opt.backupdir = os.getenv("HOME") .. "/.config/nvim/backup"
 vim.opt.wrap = true
 vim.opt.scrolloff=5
 vim.opt.title = true
@@ -22,3 +22,13 @@ vim.opt.background=dark
 vim.g.mapleader = ","
 vim.opt.clipboard="unnamedplus" -- Allow to cp/p from clipboard
 vim.opt.guifont="Fira_Code:h6"
+vim.opt.encoding="utf-8"
+vim.opt.termguicolors = true
+
+-- Fold functions/methods
+vim.opt.foldmethod="indent"
+vim.opt.foldlevel=99
+
+-- highlight lines and columns
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true

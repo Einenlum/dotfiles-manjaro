@@ -34,6 +34,9 @@ map("n", "<leader>w", ":w<CR>", {})
 -- edit vimrc
 map("n", "<leader>ae", ":e $MYVIMRC<CR>", {})
 
+-- edit plug list
+map("n", "<leader>ap", ":e $NVIM_CONFIG_DIR/lua/einenlum/plug.lua<CR>", {})
+
 -- source vimrc
 map("n", "<leader>as", ":source $MYVIMRC<CR>", {})
 
@@ -48,6 +51,9 @@ map("t", "<C-c>", "<C-\\><C-n>", {noremap=true})
 
 -- Wrap arguments in array or parenthesis
 map("n", "<leader><Space>", ":ArgWrap<CR>", {noremap=true, silent=true})
+
+-- Fold functions/methods
+map("n", "<space>", "za", {noremap=true})
 
 require('einenlum.bindings.nerdtree')
 require('einenlum.bindings.fzf')

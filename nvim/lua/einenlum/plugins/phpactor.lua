@@ -1,0 +1,4 @@
+-- I use fzf-lua instead of fzf.vim, which is not compatible with
+-- phpactor right now
+-- vim.g.phpactorInputListStrategy = 'phpactor#input#list#fzf'
+-- vim.g.phpactorQuickfixStrategy = "phpactor#quickfix#fzf"

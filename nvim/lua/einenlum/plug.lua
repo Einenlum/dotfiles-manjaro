@@ -37,6 +37,15 @@ Plug 'joshdick/onedark.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'JoosepAlviste/palenightfall.nvim'
 Plug 'kvrohit/rasmus.nvim'
+Plug('katawful/kat.nvim', {tag='3.1'})
+Plug('jonathanfilip/vim-lucius')
+Plug('Mofiqul/vscode.nvim')
+Plug('ellisonleao/gruvbox.nvim')
+Plug('Yazeed1s/minimal.nvim')
+Plug('ackyshake/Spacegray.vim')
+Plug('liuchengxu/space-vim-dark')
+Plug('tjdevries/colorbuddy.nvim', {branch='dev'})
+Plug 'jesseleite/nvim-noirbuddy'
 
 -- Language
 -- =========
