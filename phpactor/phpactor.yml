@@ -1,7 +1,7 @@
 code_transform.class_new.variants:
-    "interface": interface
-    "trait": trait
-    "strict-class": strict-class
+  "interface": interface
+  "trait": trait
+  "strict-class": strict-class
 
 indexer.exclude_patterns:
   # Default
