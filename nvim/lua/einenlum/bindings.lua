@@ -1,4 +1,5 @@
 local map = vim.api.nvim_set_keymap
+local unmap = vim.api.nvim_del_keymap
 
 -- easy copy-paste clipboard
 map("v", "<Leader>y", "\"+y<CR>", {})
@@ -34,6 +35,16 @@ map("n", "<leader>w", ":w<CR>", {})
 -- edit vimrc
 map("n", "<leader>ae", ":e $MYVIMRC<CR>", {})
 
+-- Unmap S first
+unmap("v", "S")
+unmap("n", "S")
+-- Move the visual selection up or down
+map("v", "T", ":m '>+1<CR>gv=gv", {})
+map("v", "S", ":m '<-2<CR>gv=gv", {})
+
+-- Replace current word
+map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
+
 -- edit plug list
 map("n", "<leader>ap", ":e $NVIM_CONFIG_DIR/lua/einenlum/plug.lua<CR>", {})
 
@@ -60,3 +71,4 @@ require('einenlum.bindings.fzf')
 require('einenlum.bindings.lightspeed')
 require('einenlum.bindings.hop')
 require('einenlum.bindings.syntastic')
+require('einenlum.bindings.trouble')

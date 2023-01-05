@@ -1,4 +1,4 @@
-local autogroups = require('einenlum.autogroups')
+-- local autogroups = require('einenlum.autogroups')
 
 require('einenlum.neovide')
 require('einenlum.plug')
@@ -7,4 +7,4 @@ require('einenlum.set')
 require('einenlum.bindings')
 require('einenlum.colors')
 
-local autocmds = require'einenlum.autocmds'.setup(autogroups)
+-- local autocmds = require'einenlum.autocmds'.setup(autogroups)

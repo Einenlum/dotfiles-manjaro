@@ -11,4 +11,4 @@ vim.cmd[[colorscheme nord]]
 -- Most dark colorschemes print comments in a very unreadable way.
 vim.cmd[[hi Comment guifg=#949990]]
 
-require("noirbuddy").setup()
+-- require("noirbuddy").setup()

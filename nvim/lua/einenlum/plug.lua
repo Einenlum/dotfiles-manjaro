@@ -54,15 +54,41 @@ Plug 'kikito/inspect.lua'
 
 -- Autocompletion
 -- --------------
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp' -- Dependency of ncm2
-Plug('phpactor/phpactor', {['for']='php', tag='master', ['do']='composer install --no-dev -o'})
-Plug 'phpactor/ncm2-phpactor'
+-- Plug 'ncm2/ncm2'
+-- Plug 'roxma/nvim-yarp' -- Dependency of ncm2
+-- Plug('phpactor/phpactor', {['for']='php', tag='master', ['do']='composer install --no-dev -o'})
+-- Plug 'phpactor/ncm2-phpactor'
 Plug 'github/copilot.vim' -- Test github copilot
+-- Plug 'williamboman/mason.nvim'
+-- Plug 'williamboman/mason-lspconfig.nvim'
+-- Plug 'neovim/nvim-lspconfig' -- Bring easy lsp config to nvim
+--
+Plug 'nvim-lua/plenary.nvim'
+Plug 'j-hui/fidget.nvim'
+
+-- LSP Support
+Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig' -- Bring easy lsp config to nvim
-Plug 'simrat39/rust-tools.nvim'
+
+-- Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+-- Snippets
+Plug 'L3MON4D3/LuaSnip'
+-- Snippet collection (Optional)
+Plug 'rafamadriz/friendly-snippets'
+
+Plug 'VonHeikemen/lsp-zero.nvim'
+
+-- Diagnostics
+Plug 'folke/trouble.nvim'
+
 
 -- Formatting
 -- ----------

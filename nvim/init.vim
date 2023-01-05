@@ -153,49 +153,13 @@ nmap <leader>chb :chb<CR>
 
 " Autocompletion phpactor
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
 
 " fzf-lua
 " -------
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
-
-" Vdebug
-" ------
-
-let g:vdebug_keymap = {
-\    "run" : "<Leader>r",
-\    "run_to_cursor" : "<Up>",
-\    "step_over" : "<Down>",
-\    "step_into" : "<Right>",
-\    "step_out" : "<Left>",
-\    "close" : "q",
-\    "detach" : "<F7>",
-\    "set_breakpoint" : "<Leader>s",
-\    "eval_visual" : "<Leader>e"
-\}
-
-" Allows Vdebug to bind to all interfaces.
-let g:vdebug_options = {}
-
-" Stops execution at the first line.
-let g:vdebug_options['break_on_open'] = 1
-let g:vdebug_options['max_children'] = 128
-
-" Use the compact window layout.
-let g:vdebug_options['watch_window_style'] = 'compact'
-
-" Because it's the company default.
-let g:vdebug_options['ide_key'] = 'PHPSTORM'
-
-" Need to set as empty for this to work with Vagrant boxes.
-let g:vdebug_options['server'] = ""
-
-let g:vdebug_options['port'] = 9003 
-
-" let g:vdebug_options['path_maps'] = {'/app': getcwd()}
 
 " Syntastic
 " ---------
