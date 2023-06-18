@@ -1,0 +1,49 @@
+{
+    "$this->…": {
+        "prefix": "$t",
+        "body": "\\$this->$0",
+        "description": "$this->..."
+    },
+    "$this->… = …": {
+        "prefix": "$t=",
+        "body": "\\$this->$0 = \\$$0;",
+        "description": "$this->… = …"
+    },
+    "function __construct": {
+        "prefix": "con",
+        "body": [
+            "${1:public} function __construct(${2:${3:Type} \\$${4:var}${5: = ${6:null}}}) {",
+                "\t\\$this->${4:var} = \\$${4:var};$0",
+                "}"
+        ]
+    },
+    "function …": {
+        "prefix": ["fun"],
+        "body": [
+            "${1:public }function ${2:FunctionName}(${3})${4:: ReturnType}",
+            "{",
+            "\t${0}",
+            "}"
+        ],
+        "description": "Function"
+    },
+    "getter …": {
+        "prefix": ["gt"],
+        "body": [
+            "${1:public }function get${0:FunctionName}()",
+            "{",
+            "\t\\$this->${0:# property name...} = \\$${0:# property name...};",
+            "}"
+        ],
+        "description": "Getter"
+    },
+    "setter …": {
+        "prefix": ["st"],
+        "body": [
+            "${1:public }function ${2:FunctionName}(${3:${4:${5:Type} }\\$${6:var}${7: = ${8:null}}}) {",
+                "\t${0:# code...}",
+                "}"
+        ],
+        "description": "Setter"
+    }
+}

@@ -1,3 +1,3 @@
-vim.g.UltiSnipsExpandTrigger = '<tab>'
-vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+-- vim.g.UltiSnipsExpandTrigger = '<C-s>'
+-- vim.g.UltiSnipsJumpForwardTrigger = '<C-s>'
+-- vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'

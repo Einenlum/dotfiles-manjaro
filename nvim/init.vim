@@ -24,6 +24,8 @@ autocmd FileType make setlocal noexpandtab
 hi NBSPGroup guibg=LightYellow
 match NBSPGroup / /
 
+let g:rustfmt_autosave = 1
+
 " yml autoindent (??)
 set autoindent sw=4 ts=4 expandtab
 setlocal autoindent sw=4 ts=4 expandtab

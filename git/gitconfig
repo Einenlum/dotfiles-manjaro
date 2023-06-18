@@ -12,9 +12,9 @@
     # Delete branches from your recent used ones
     fd = "!f() { git branch -a --sort=-committerdate | grep -v remotes\\/ | fzf -m | sed 's/remotes\\/origin\\///' | xargs -o git br -D; }; f"
     # Show a commit
-    fs = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1\"^\"}' | xargs -o git show; }; f"
+    fs = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1}' | xargs -o git show; }; f"
 [user]
-	email = yann.rabiller@fortrabbit.com
+	email = yann.rabiller@gmail.com
 	name = Yann Rabiller
 [push]
 	default = current

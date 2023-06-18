@@ -62,7 +62,7 @@ export PATH=~/.bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.poetry/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
-export PATH=~/.local/share/nvim/plugged/phpactor/bin:$PATH
+# export PATH=~/.local/share/nvim/plugged/phpactor/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 
 
@@ -74,6 +74,9 @@ export PATH=/usr/local/go/bin:$PATH
 # export LANG=en_US.UTF-8
 
 export EDITOR='nvim'
+
+# Avoid python cache
+# export PYTHONDONTWRITEBYTECODE='true'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,6 +97,7 @@ alias sf="symfony"
 alias sfc="symfony console"
 alias sfcc="php app/console cache:clear"
 alias sfr="php app/console server:run"
+alias git='LANG=en_US git'
 alias g="git"
 alias gpf="git push --force-with-lease"
 alias gp="git push"
@@ -121,7 +125,11 @@ alias baum='tree -aL 1'
 alias srg="rg -j1"
 alias kl="kubectl"
 alias pos="poetry shell"
+alias po="poetry"
 alias c="composer"
+alias dja='DJANGO_SETTINGS_MODULE=project.settings.development python src/manage.py'
+alias py="python"
+alias sail="./vendor/bin/sail"
 
 # allow ctrl-s
 stty -ixon
@@ -182,3 +190,10 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 eval "$(zoxide init zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
