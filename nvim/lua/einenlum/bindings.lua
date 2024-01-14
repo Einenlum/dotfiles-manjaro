@@ -13,13 +13,13 @@ map("n", "<Leader>p", ":bp<CR>", {})
 map("n", "<Leader>D", ":bd!<CR>", {})
 
 -- Clear search highlight
-map("n", "<Leader>/", ":let @/=\"\"<CR>", {silent = true})
+map("n", "<Leader>/", ":let @/=\"\"<CR>", { silent = true })
 
 -- easy navigation between words
-map("n", "<C-t>", "5j", {noremap= true})
-map("v", "<C-t>", "5j", {noremap= true})
-map("n", "<C-s>", "5k", {noremap= true})
-map("v", "<C-s>", "5k", {noremap= true})
+map("n", "<C-t>", "5j", { noremap = true })
+map("v", "<C-t>", "5j", { noremap = true })
+map("n", "<C-s>", "5k", { noremap = true })
+map("v", "<C-s>", "5k", { noremap = true })
 
 -- rm file
 map("n", "<leader>rm", ":call delete(expand('%')) | Bdelete!<CR>", {})
@@ -53,18 +53,18 @@ map("n", "<leader>as", ":source $MYVIMRC<CR>", {})
 
 -- Fix Ctrl-C as esc
 map("", "<C-c>", "<Esc>", {})
-map("i", "<C-c>", "<Esc>", {noremap=true})
+map("i", "<C-c>", "<Esc>", { noremap = true })
 map("i", "<C-c>", "<Esc>", {})
 
 -- Map esc and ctrl c to leave terminal mode
-map("t", "<Esc>", "<C-\\><C-n>", {noremap=true})
-map("t", "<C-c>", "<C-\\><C-n>", {noremap=true})
+map("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+map("t", "<C-c>", "<C-\\><C-n>", { noremap = true })
 
 -- Wrap arguments in array or parenthesis
-map("n", "<leader><Space>", ":ArgWrap<CR>", {noremap=true, silent=true})
+map("n", "<leader><Space>", ":ArgWrap<CR>", { noremap = true, silent = true })
 
 -- Fold functions/methods
-map("n", "<space>", "za", {noremap=true})
+map("n", "<space>", "za", { noremap = true })
 
 require('einenlum.bindings.nerdtree')
 require('einenlum.bindings.fzf')

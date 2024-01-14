@@ -14,8 +14,10 @@
     # Show a commit
     fs = "!f() { git log --pretty=oneline | fzf -n 2.. | awk '{print $1}' | xargs -o git show; }; f"
 [user]
-	email = yann.rabiller@gmail.com
-	name = Yann Rabiller
+	email = contact@einenlum.com
+	name = Einenlum
+	; email = jesuisuncomptebidon@protonmail.com
+	; name = jesuisuncomptebidon001
 [push]
 	default = current
 	autoSetupRemote = true

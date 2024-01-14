@@ -12,6 +12,8 @@ env/
 .venv/
 __pycache__/
 .mypy_cache/
+# pyenv
+.python-version
 
 # poetry
 /*.egg-info
@@ -29,4 +31,4 @@ auth.json
 .vimrc
 .php-version
 id_rsa
-
+.phpactor.json

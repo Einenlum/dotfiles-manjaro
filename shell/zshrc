@@ -52,6 +52,9 @@ plugins=(git dotenv)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+#
+# fly
+export FLYCTL_INSTALL="/home/einenlum/.fly"
 
 # export PATH="$HOME/.phpenv/bin"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
@@ -64,6 +67,7 @@ export PATH=~/.poetry/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 # export PATH=~/.local/share/nvim/plugged/phpactor/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 
 # eval "$(phpenv init -)"
@@ -128,8 +132,14 @@ alias pos="poetry shell"
 alias po="poetry"
 alias c="composer"
 alias dja='DJANGO_SETTINGS_MODULE=project.settings.development python src/manage.py'
+alias pm='python ./manage.py'
 alias py="python"
 alias sail="./vendor/bin/sail"
+alias art="./artisan"
+alias sa="sail artisan"
+alias sc="sail composer"
+alias ve="python -m venv .venv"
+alias so="source ./.venv/bin/activate"
 
 # allow ctrl-s
 stty -ixon
@@ -197,3 +207,10 @@ eval "$(pyenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/home/einenlum/.bun/_bun" ] && source "/home/einenlum/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

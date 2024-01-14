@@ -17,6 +17,7 @@ sudo pamac install --no-confirm \
     fd \
     firefox \
     fzf \
+    fzy \
     gcc \
     git-delta \
     gnome-terminal \
@@ -57,6 +58,8 @@ yay sublime-text-4
 yay visual-studio-code-bin # uses the proprietary version instead of the openvsx one
 yay insomnia-bin
 yay i3lock-fancy # lock the screen
+yay ttf-ms-fonts # comic sans ms, arial, times new roman
+yay ttf-vista-fonts # calibri, cambria, consolas
 sudo pip install neovim
 sudo pip3 install neovim
 sudo groupadd docker

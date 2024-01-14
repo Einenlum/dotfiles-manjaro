@@ -168,7 +168,7 @@ bindsym $mod+Shift+f exec firefox
 # Starts brave
 bindsym $mod+Shift+c exec brave
 # xfce4-notify
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+for_window [class="Xfce4-notifyd"] floating enable;border none; mode_toggle
 
 # Switch bÃ©po/azerty
 bindsym $ms+a exec setxkbmap fr
