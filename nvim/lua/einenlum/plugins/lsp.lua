@@ -3,17 +3,6 @@ local lsp = require('lsp-zero')
 
 lsp.preset({})
 
-lsp.ensure_installed({
-    "tsserver",
-    "lua_ls",
-    "rust_analyzer",
-    "phpactor",
-    -- "intelephense",
-    -- "pyright",
-    "ruff_lsp",
-    "dockerls"
-})
-
 local on_attach = function(client, bufnr)
     local opts = { remap = false, buffer = bufnr }
     vim.g.lsp_diagnostics_echo_cursor = 1
@@ -29,6 +18,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>crn', function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set('n', '<leader>ci', function() vim.lsp.buf.implementation() end, opts)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set('n', 'leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     -- Not working
     -- vim.keymap.set('n', '<leader>ld', function() vim.diagnostic.open_float() end, opts)
 
@@ -115,26 +105,7 @@ require('lspconfig').ruff_lsp.setup {
     }
 }
 
-require 'lspconfig'.phpactor.setup {
-    on_attach = on_attach,
-    init_options = {
-        ["language_server_phpstan.enabled"] = false,
-        ["language_server_psalm.enabled"] = false,
-    }
-}
-
 local Float = require "plenary.window.float"
-
-vim.cmd([[
-    augroup LspPhpactor
-      autocmd!
-      autocmd Filetype php command! -nargs=0 LspPhpactorReindex lua vim.lsp.buf_notify(0, "phpactor/indexer/reindex",{})
-      autocmd Filetype php command! -nargs=0 LspPhpactorConfig lua LspPhpactorDumpConfig()
-      autocmd Filetype php command! -nargs=0 LspPhpactorStatus lua LspPhpactorStatus()
-      autocmd Filetype php command! -nargs=0 LspPhpactorBlackfireStart lua LspPhpactorBlackfireStart()
-      autocmd Filetype php command! -nargs=0 LspPhpactorBlackfireFinish lua LspPhpactorBlackfireFinish()
-    augroup END
-]])
 
 local function showWindow(title, syntax, contents)
     local out = {};
@@ -157,43 +128,6 @@ local function showWindow(title, syntax, contents)
     vim.api.nvim_buf_set_option(float.bufnr, "filetype", syntax)
     vim.api.nvim_buf_set_lines(float.bufnr, 0, -1, false, out)
 end
-
-function LspPhpactorDumpConfig()
-    local results, _ = vim.lsp.buf_request_sync(0, "phpactor/debug/config", { ["return"] = true })
-    for _, res in pairs(results or {}) do
-        showWindow("Phpactor LSP Configuration", "json", res["result"])
-    end
-end
-
-function LspPhpactorStatus()
-    local results, _ = vim.lsp.buf_request_sync(0, "phpactor/status", { ["return"] = true })
-    for _, res in pairs(results or {}) do
-        showWindow("Phpactor Status", "markdown", res["result"])
-    end
-end
-
-function LspPhpactorBlackfireStart()
-    local _, _ = vim.lsp.buf_request_sync(0, "blackfire/start", {})
-end
-
-function LspPhpactorBlackfireFinish()
-    local _, _ = vim.lsp.buf_request_sync(0, "blackfire/finish", {})
-end
-
--- local rt = require("rust-tools")
-
--- rt.setup({
---   server = {
---     on_attach = function(_, bufnr)
---         on_attach(_, bufnr)
---         -- Hover actions
---         vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
---         -- Code action groups
---         vim.keymap.set("n", "<Leader>cl", rt.code_action_group.code_action_group, { buffer = bufnr })
---     end,
---   },
--- })
--- rt.inlay_hints.enable()
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
@@ -239,17 +173,5 @@ vim.diagnostic.config({
         prefix = '',
     },
 })
-
--- require("mason-null-ls").setup({
---     ensure_installed = { "black" }
--- })
-
--- local null_ls = require("null-ls")
-
--- null_ls.setup({
---     sources = {
---         null_ls.builtins.formatting.black,
---     },
--- })
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
