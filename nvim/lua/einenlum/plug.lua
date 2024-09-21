@@ -24,6 +24,7 @@ Plug "kyazdani42/blue-moon"
 Plug 'AlessandroYorba/Alduin'
 Plug 'FrenzyExists/aquarium-vim'
 Plug 'JoosepAlviste/palenightfall.nvim'
+Plug 'comfysage/evergarden'
 Plug 'embark-theme/vim'
 Plug 'folke/tokyonight.nvim'
 Plug 'glepnir/oceanic-material'
@@ -41,7 +42,10 @@ Plug('AlexvZyl/nordic.nvim', { branch = 'main' })
 Plug('Yazeed1s/oh-lucy.nvim')
 Plug('aktersnurra/no-clown-fiesta.nvim')
 Plug('catppuccin/nvim', { as = 'catppuccin' })
+Plug('dgox16/oldworld.nvim')
 Plug('mcchrish/zenbones.nvim')
+Plug('nyoom-engineering/oxocarbon.nvim')
+Plug('rebelot/kanagawa.nvim')
 
 
 
