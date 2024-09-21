@@ -2,7 +2,7 @@
 node_modules
 
 # php
-vendor
+/vendor
 .env.local
 .env.*.local
 .phpunit.result.cache
