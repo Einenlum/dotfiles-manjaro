@@ -142,6 +142,19 @@ alias ve="python -m venv .venv && so"
 alias de="deactivate"
 alias fly="LOG_LEVEL=no flyctl"
 alias cd="z"
+# -i asks for confirmation if it overrides a file
+# -v recaps what you've done
+alias mv="mv -iv"
+
+# -i asks for confirmation if it overrides a file
+# -v recaps what you've done
+# -r is for recursive
+alias cp="cp -riv"
+
+# -v recaps what you've done
+# -p creates parent folders if not present
+alias mkdir="mkdir -vp"
+
 # adonisjs
 alias na="node ace"
 
