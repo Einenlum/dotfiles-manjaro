@@ -62,3 +62,8 @@
 	keepBackup = false
 [credential]
 	helper = store
+
+[include]
+    # git silently ignores non-existing files
+    # put there everything that should not be commited
+    path = ~/.git_custom_configs/gitconfig
