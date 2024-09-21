@@ -32,3 +32,7 @@ auth.json
 .php-version
 id_rsa
 .phpactor.json
+
+# Personal scripts anywhere that can be
+# used but will not be committed
+einenlum_local_scripts/
