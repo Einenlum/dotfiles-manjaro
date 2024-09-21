@@ -1,13 +1,28 @@
+local map = vim.api.nvim_set_keymap
+
 vim.g.nord_italic = true
 vim.g.nord_underline = true
 vim.g.nord_italic_comments = true
 
 -- Default Colorscheme
 -- ___________
+--
+--
+local light_start = 9
+local light_end = 17
 
--- vim.cmd [[set background=dark]]
-vim.cmd [[set background=dark]]
+local current_hour = tonumber(os.date("%H"))
+
+if (current_hour >= light_end or current_hour <= light_start) then
+    vim.o.background = 'dark'
+else
+    vim.o.background = 'light'
+end
 -- vim.cmd[[colorscheme nord]]
+--
+--
+map("n", "<Leader>cl", ":set background=light<CR>", {})
+map("n", "<Leader>cd", ":set background=dark<CR>", {})
 
 local colors = {
     'adwaita',
