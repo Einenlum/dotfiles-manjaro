@@ -1,0 +1,7 @@
+<?php
+
+use function Pest\Laravel\{get, post, put, delete};
+
+test('', function() {
+    get('/')->assertOk();
+});

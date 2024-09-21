@@ -1,6 +1,7 @@
 code_transform.class_new.variants:
   "interface": interface
   "trait": trait
+  "pest": pest-class
   "default": strict-class
 
 indexer.exclude_patterns:
