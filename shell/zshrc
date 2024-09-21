@@ -69,7 +69,6 @@ export PATH=~/.cargo/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-
 # eval "$(phpenv init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -138,8 +137,9 @@ alias sail="./vendor/bin/sail"
 alias art="./artisan"
 alias sa="sail artisan"
 alias sc="sail composer"
-alias ve="python -m venv .venv"
 alias so="source ./.venv/bin/activate"
+alias ve="python -m venv .venv && so"
+alias de="deactivate"
 
 # allow ctrl-s
 stty -ixon
@@ -203,6 +203,8 @@ eval "$(zoxide init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/shims/python"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
