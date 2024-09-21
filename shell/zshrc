@@ -141,6 +141,7 @@ alias so="source ./.venv/bin/activate"
 alias ve="python -m venv .venv && so"
 alias de="deactivate"
 alias fly="LOG_LEVEL=no flyctl"
+alias cd="z"
 # adonisjs
 alias na="node ace"
 
