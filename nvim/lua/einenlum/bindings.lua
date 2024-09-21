@@ -53,8 +53,9 @@ map("n", "<leader>as", ":source $MYVIMRC<CR>", {})
 
 -- Fix Ctrl-C as esc
 map("", "<C-c>", "<Esc>", {})
-map("i", "<C-c>", "<Esc>", { noremap = true })
 map("i", "<C-c>", "<Esc>", {})
+map("n", "<C-c>", "<Esc>", { noremap = true })
+map("v", "<C-c>", "<Esc>", { noremap = true })
 
 -- Map esc and ctrl c to leave terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
