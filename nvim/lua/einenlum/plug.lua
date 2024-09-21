@@ -114,7 +114,6 @@ Plug 'folke/trouble.nvim'
 
 -- Formatting
 -- ----------
-Plug('psf/black', { tag = '19.10b0' }) -- autoformat code for python
 Plug('prettier/vim-prettier', {
     ['do'] = 'yarn install',
     ['for'] = { 'javascript', 'typescript', 'graphql', 'vue' }
