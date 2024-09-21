@@ -91,6 +91,7 @@ Plug 'simrat39/rust-tools.nvim'
 
 -- Debugging
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'jayp0521/mason-nvim-dap.nvim'
 
