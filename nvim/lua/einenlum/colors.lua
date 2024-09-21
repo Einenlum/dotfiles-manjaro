@@ -64,8 +64,21 @@ local colors = {
 -- local color = colors[math.random(#colors)]
 
 -- vim.cmd("colorscheme " .. color)
-vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme forestbones")
 -- Most dark colorschemes print comments in a very unreadable way.
 vim.cmd [[hi Comment guifg=#949990]]
 
--- require("noirbuddy").setup()
+require 'evergarden'.setup {
+    transparent_background = false,
+    contrast_dark = 'medium', -- 'hard'|'medium'|'soft'
+    override_terminal = true,
+    style = {
+        tabline = { reverse = true, color = 'green' },
+        search = { reverse = false, inc_reverse = true },
+        types = { italic = false },
+        keyword = { italic = false },
+        comment = { italic = true },
+        sign = { highlight = true },
+    },
+    overrides = {}, -- add custom overrides
+}
