@@ -44,8 +44,8 @@ noremap L C
 noremap h r
 noremap H R
 " {K} = « Substitue »          (k = caractère, K = ligne)
-noremap k s
-noremap K S
+" noremap k s
+" noremap K S
 " Corollaire : correction orthographique
 noremap ]k ]s
 noremap [k [s
