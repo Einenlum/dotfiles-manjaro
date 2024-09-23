@@ -2,10 +2,11 @@ function PhpactorClassMove(new_file)
   -- Get full path of the current file
   local current_file = vim.fn.expand('%:p')
 
+  -- If no new file is provided, ask the user for it
   if not new_file or new_file == '' then
     new_file = vim.fn.input('New path for class: ', current_file)
     if not new_file or new_file == '' then
-      print('Opération annulée.')
+      print('Canceled.')
       return
     end
   end
