@@ -3,7 +3,6 @@ local api = vim.api
 require('nvim-treesitter.configs').setup {
     ensure_installed = {
         "css",
-        "help",
         "html",
         "javascript",
         "lua",
@@ -17,6 +16,7 @@ require('nvim-treesitter.configs').setup {
         "typescript",
         "tsx",
         "yaml",
+        "vimdoc",
     },
     auto_install = true,
     highlight = {
