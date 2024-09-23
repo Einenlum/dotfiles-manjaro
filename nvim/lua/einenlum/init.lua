@@ -1,5 +1,5 @@
 require('einenlum.neovide')
-require('einenlum.plug')
+require('einenlum.lazy')
 require('einenlum.plugins')
 require('einenlum.set')
 require('einenlum.bindings')
