@@ -45,5 +45,18 @@ require('mason-lspconfig').setup({
         filetypes = { "html", "blade", "css", "scss", "less", "javascriptreact", "typescriptreact", "vue", "svelte" },
       })
     end,
+    -- Avoid having the lua language server complain about
+    -- the 'vim' global variable being not defined
+    ["lua_ls"] = function()
+      require('lspconfig').lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+    end,
   },
 })
