@@ -16,9 +16,12 @@ end
 vim.api.nvim_create_autocmd('BufNewFile', {
     pattern = '*.php',
     callback = function()
-        local luasnip = require('luasnip')
-        local class_snippet = get_php_class_snippet()
-        -- print(vim.inspect(class_snippet))
-        luasnip.snip_expand(class_snippet)
+        -- Only expand the class snippet if the filetype is php
+        -- which excludes blade files
+        if vim.bo.filetype == 'php' then
+            local luasnip = require('luasnip')
+            local class_snippet = get_php_class_snippet()
+            luasnip.snip_expand(class_snippet)
+        end
     end
 })
