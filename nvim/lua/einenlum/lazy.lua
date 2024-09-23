@@ -101,8 +101,10 @@ require("lazy").setup({
     -- Diagnostics
     { 'folke/trouble.nvim' },
 
-    -- Formatting
-    { 'prettier/vim-prettier',               build = 'yarn install',    ft = { 'javascript', 'typescript', 'graphql', 'vue' } },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
 
     -- Snippets
     { 'SirVer/ultisnips' }, -- Snippets
