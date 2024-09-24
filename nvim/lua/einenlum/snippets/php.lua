@@ -71,7 +71,7 @@ local filepath_to_namespace = function()
             local subpath = relative_path:sub(#mapping_path + 1)
 
             -- Remove the filename from subpath
-            subpath = subpath:gsub('/[^/]+$', '')  -- Remove '/filename'
+            subpath = subpath:gsub('[^/]+$', '')  -- Remove filename
 
             -- Convert to namespace separators
             subpath = subpath:gsub('/', '\\')
