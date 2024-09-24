@@ -46,7 +46,7 @@ map("v", "S", ":m '<-2<CR>gv=gv", {})
 map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
 -- edit plug list
-map("n", "<leader>ap", ":e $NVIM_CONFIG_DIR/lua/einenlum/plug.lua<CR>", {})
+map("n", "<leader>ap", ":e $NVIM_CONFIG_DIR/lua/einenlum/lazy.lua<CR>", {})
 
 -- source vimrc
 map("n", "<leader>as", ":source $MYVIMRC<CR>", {})
