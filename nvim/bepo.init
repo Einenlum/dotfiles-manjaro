@@ -80,6 +80,10 @@ noremap wo <C-w>s
 noremap wp <C-w>o
 noremap w<SPACE> :split<CR>
 noremap w<CR> :vsplit<CR>
+nnoremap <C-left> :vertical resize -5<CR>
+nnoremap <C-down> :resize +5<CR>
+nnoremap <C-up> :resize -5<CR>
+nnoremap <C-right> :vertical resize +5<CR>
 
 " Chiffres en accès direct
 " ————————————————————————
