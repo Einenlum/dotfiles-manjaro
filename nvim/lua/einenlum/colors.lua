@@ -13,11 +13,12 @@ local light_end = 17
 
 local current_hour = tonumber(os.date("%H"))
 
-if (current_hour >= light_end or current_hour <= light_start) then
-    vim.o.background = 'dark'
-else
-    vim.o.background = 'light'
-end
+-- if (current_hour >= light_end or current_hour <= light_start) then
+--     vim.o.background = 'dark'
+-- else
+--     vim.o.background = 'light'
+-- end
+vim.o.background = 'dark'
 -- vim.cmd[[colorscheme nord]]
 --
 --
@@ -64,7 +65,7 @@ local colors = {
 -- local color = colors[math.random(#colors)]
 
 -- vim.cmd("colorscheme " .. color)
-vim.cmd("colorscheme forestbones")
+vim.cmd("colorscheme melange")
 -- Most dark colorschemes print comments in a very unreadable way.
 vim.cmd [[hi Comment guifg=#949990]]
 
