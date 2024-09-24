@@ -10,9 +10,4 @@ git clone https://github.com/Einenlum/dotfiles-manjaro.git ~/dotfiles && \
 cd ~/dotfiles && \
 ./install.sh
 ```
-Open neovim:
-
-```
-:PlugInstall
-:UpdateRemotePlugins
-```
+Open neovim and Lazy installs everything needed.
