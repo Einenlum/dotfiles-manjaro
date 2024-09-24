@@ -24,6 +24,10 @@ setopt APPENDHISTORY # ensures that each command entered in the current session 
 
 export HISTTIMEFORMAT="%d/%m/%Y %H:%M] "
 
+# Enable incremental history search
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
