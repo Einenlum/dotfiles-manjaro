@@ -32,6 +32,42 @@ lsp.extend_lspconfig({
   },
 })
 
+
+-- Custom handler for 'textDocument/definition'
+-- The problem is that when I jump on a PHP class definition,
+-- I get two results: one for the class and one for the constructor
+local function goto_definition(_, result, ctx, _)
+  if result == nil or vim.tbl_isempty(result) then
+    vim.notify('[LSP] Definition not found', vim.log.levels.INFO)
+    return nil
+  end
+
+  -- If multiple results, check if they are in the same file
+  if vim.tbl_islist(result) then
+    local first_uri = result[1].uri or result[1].targetUri
+    local same_file = true
+
+    for _, location in ipairs(result) do
+      local uri = location.uri or location.targetUri
+      if uri ~= first_uri then
+        same_file = false
+        break
+      end
+    end
+
+    if same_file then
+      -- Jump to the first location if all are in the same file
+      vim.lsp.util.jump_to_location(result[1], 'utf-8')
+    else
+      -- Show all locations if they are in different files
+      vim.lsp.handlers['textDocument/definition'](_, result, ctx, _)
+    end
+  else
+    -- Single result, jump directly
+    vim.lsp.util.jump_to_location(result, 'utf-8')
+  end
+end
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {
@@ -55,6 +91,13 @@ require('mason-lspconfig').setup({
               globals = { "vim" },
             },
           },
+        },
+      })
+    end,
+    ["intelephense"] = function()
+      require('lspconfig').intelephense.setup({
+        handlers = {
+          ['textDocument/definition'] = goto_definition,
         },
       })
     end,
