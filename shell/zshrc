@@ -24,6 +24,8 @@ setopt APPENDHISTORY # ensures that each command entered in the current session 
 
 export HISTTIMEFORMAT="%d/%m/%Y %H:%M] "
 
+export LESS="-R"
+
 # Enable incremental history search
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward

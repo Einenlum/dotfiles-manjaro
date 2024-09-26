@@ -23,7 +23,7 @@
 	autoSetupRemote = true
 [core]
     excludesfile = ~/.gitignore
-	pager = less -LRc --mouse
+    pager = delta
 
 # Avoid memory limit with git (git pack issue)
     packedGitLimit = 512m 
@@ -53,11 +53,11 @@
 [interactive]
     diffFilter = delta --color-only
 [pager]
-	diff = LESS='LRc --mouse' delta
-	show = LESS='LRc --mouse' delta
-	stash = LESS='LRc --mouse' delta
-	log = LESS='LRc --mouse' delta
-	reflog = LESS='LRc --mouse' delta
+	diff = delta
+	show = delta
+	stash = delta
+	log = delta
+	reflog = delta
 [pull]
 	ff = only
 [delta]
