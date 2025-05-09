@@ -21,6 +21,7 @@ sudo pamac install --no-confirm \
     gcc \
     git-delta \
     gnome-terminal \
+    go \
     gvim \
     highlight \
     i3-gaps \
@@ -96,6 +97,7 @@ sudo rm -f ~/.eslintrc
 dotfiles_dir=~/dotfiles
 
 ln -sf $dotfiles_dir/nvim ~/.config/nvim
+ln -sf $dotfiles_dir/shell/starship ~/.config/starship
 ln -sf $dotfiles_dir/shell/tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/shell/zshrc ~/.zshrc
 ln -sf $dotfiles_dir/git/gitconfig ~/.gitconfig
