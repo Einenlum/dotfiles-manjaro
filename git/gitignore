@@ -36,3 +36,4 @@ id_rsa
 # Personal scripts anywhere that can be
 # used but will not be committed
 einenlum_local_scripts/
+.not_commited/
