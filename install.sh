@@ -14,6 +14,7 @@ sudo pamac install --no-confirm \
     dmenu \
     docker \
     docker-compose \
+    eza \
     fd \
     firefox \
     fzf \
