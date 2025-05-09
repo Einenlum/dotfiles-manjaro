@@ -50,7 +50,7 @@
 	new = green bold
 	whitespace = red reverse
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [interactive]
     diffFilter = delta --color-only
 [pager]
