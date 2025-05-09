@@ -45,8 +45,11 @@ map("v", "S", ":m '<-2<CR>gv=gv", {})
 -- Replace current word
 map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
--- edit plug list
+-- edit plugins list
 map("n", "<leader>ap", ":e $NVIM_CONFIG_DIR/lua/einenlum/lazy.lua<CR>", {})
+
+-- edit zsh
+map("n", "<leader>az", ":e ~/.zshrc<CR>", {})
 
 -- source vimrc
 map("n", "<leader>as", ":source $MYVIMRC<CR>", {})
