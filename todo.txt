@@ -1,0 +1,3 @@
+- Fix show error message on top if no space
+- Don't trigger luasnip when renaming a file
+- fix ,lr lusty
