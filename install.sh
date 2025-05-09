@@ -76,9 +76,6 @@ wget https://psysh.org/psysh
 chmod +x psysh
 sudo mv psysh /usr/local/bin/.
 
-# Install pyenv
-curl https://pyenv.run | bash
-
 mkdir ~/.bin
 
 sudo rm -Rf ~/.vim
