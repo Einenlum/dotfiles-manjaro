@@ -22,13 +22,15 @@ setopt EXTENDED_HISTORY # records the time when each command was executed along 
 
 setopt APPENDHISTORY # ensures that each command entered in the current session is appended to the history file immediately after execution
 
+setopt interactivecomments
+
 export HISTTIMEFORMAT="%d/%m/%Y %H:%M] "
 
 export LESS="-R"
 
 # Enable incremental history search
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -44,6 +46,7 @@ bindkey '^[[B' history-search-forward
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # User configuration
 #
@@ -60,8 +63,10 @@ export PATH=~/.local/bin:$PATH
 export PATH=~/.poetry/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 # export PATH=~/.local/share/nvim/plugged/phpactor/bin:$PATH
-export PATH=/usr/local/go/bin:$PATH
+# export PATH=/usr/local/go/bin:$PATH
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# export GOPATH=$HOME/Prog/go
 
 # eval "$(phpenv init -)"
 
@@ -108,6 +113,7 @@ alias dce="docker-compose exec"
 alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
 alias bat='bat --paging=never --style=plain,numbers'
+alias kvim='NVIM_APPNAME="kickstart-nvim" nvim'
 alias vim='nvim'
 alias vi='vim'
 alias baum='tree -aL 1'
@@ -119,15 +125,21 @@ alias c="composer"
 alias dja='DJANGO_SETTINGS_MODULE=project.settings.development python src/manage.py'
 alias pm='python ./manage.py'
 alias py="python"
-alias sail="./vendor/bin/sail"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias art="./artisan"
 alias sa="sail artisan"
 alias sc="sail composer"
+alias s="sail"
 alias so="source ./.venv/bin/activate"
 alias ve="python -m venv .venv && so"
+alias urd="uv run django-admin"
+alias urm="uv run manage.py"
 alias de="deactivate"
 alias fly="LOG_LEVEL=no flyctl"
 alias cd="z"
+alias ls="exa"
+alias ll="exa"
+
 # -i asks for confirmation if it overrides a file
 # -v recaps what you've done
 alias mv="mv -iv"
@@ -194,7 +206,6 @@ searchgit() {
                 FZF-EOF
               "
 }
-# eval "$(pyenv init -)"
 
 source /home/einenlum/.config/broot/launcher/bash/br
 
@@ -203,11 +214,6 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 eval "$(zoxide init zsh)"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/shims/python"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -220,6 +226,7 @@ export NVM_DIR="$HOME/.nvm"
 # # Bind keys for moving backward and forward by word
 bindkey "^[[1;5C" forward-word  # Ctrl + Right Arrow
 bindkey "^[[1;5D" backward-word  # Ctrl + Left Arrow
+bindkey "^[[3~" delete-char
 
 
 # bun
