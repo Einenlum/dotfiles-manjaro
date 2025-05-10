@@ -32,7 +32,7 @@ bindsym $mod+Shift+b kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+i exec dmenu_run
-bindsym $mod+i exec "rofi -modi drun -show drun -theme ~/.config/rofi/launchers/text/custom_style.rasi"
+bindsym $mod+i exec "rofi -modi drun -show drun -theme ~/.config/rofi/launchers/type-1/style-10.rasi"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

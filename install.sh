@@ -156,10 +156,7 @@ cd /tmp && git clone --depth=1 https://github.com/adi1090x/rofi.git
 cd rofi && chmod +x setup.sh
 ./setup.sh
 
-ln -sf $dotfiles_dir/rofi/theme/custom.rasi ~/.config/rofi/launchers/text/styles/custom.rasi
-rm ~/.config/rofi/launchers/text/styles/colors.rasi && \
-    ln -sf $dotfiles_dir/rofi/theme/colors.rasi ~/.config/rofi/launchers/text/styles/colors.rasi
-ln -sf $dotfiles_dir/rofi/theme/custom_style.rasi ~/.config/rofi/launchers/text/custom_style.rasi
+echo '@import "~/.config/rofi/colors/gruvbox.rasi"' > launchers/type-1/shared/colors.rasi
 
 # Install poetry
 curl -sSL https://install.python-poetry.org | python3 -
