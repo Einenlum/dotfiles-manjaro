@@ -8,8 +8,6 @@ HISTFILE=~/.zsh_history # location of the history file
 
 export HISTFILESIZE=10000000 # history limit of the file on disk
 
-export HISTFILESIZE=10000000 # history limit of the file on disk
-
 export HISTSIZE=10000000 # current session's history limit, also following this https://unix.stackexchange.com/a/595475 $HISTSIZE should be at least 20% bigger than $SAVEHIST 
 
 export SAVEHIST=500000 # zsh saves this many lines from the in-memory history list to the history file upon shell exit
