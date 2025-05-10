@@ -152,15 +152,21 @@ bindsym $mod+o mode "resize"
 bar {
         status_command i3status
         colors {
-                background #0C1620
-                active_workspace   #153326 #193B60 #FFFFFF
-                inactive_workspace   #16222F #16222F #888888
-                focused_workspace  #37505D #37505D #FFFFFF
-                urgent_workspace   #2F343A #6A4B7E #FFFFFF
+                # border, background, text
+                background #282828FF
+                active_workspace   #B8BB26FF #193B60 #FFFFFF
+                inactive_workspace   #282828 #282828 #888888
+                focused_workspace  #83A598 #83A598 #000000
+                urgent_workspace   #2F343A #FB4934FF #000000
         }
 }
 
-client.focused          #4D716D #37505D #FFFFFF #2E9EF4   #285577
+# border, background, text, indicator, child border
+client.focused          #83A598 #83A598 #000000 #2E9EF4  #83A598 # ← selected
+client.focused_inactive #353535 #282828 #EBDBB2 #353535 #353535   # ← background-alt
+client.unfocused        #282828 #282828 #EBDBB2 #282828 #282828   # ← background
+client.urgent           #FB4934 #282828 #EBDBB2 #FB4934 #FB4934   # ← urgent
+client.placeholder      #282828 #282828 #EBDBB2 #282828 #282828   # fallback
 
 # Shortcuts
 # Starts firefox
