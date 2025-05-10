@@ -110,6 +110,8 @@ alias dce="docker-compose exec"
 alias dcl="docker-compose logs"
 alias dog='highlight -O ansi'
 alias bat='bat --paging=never --style=plain,numbers'
+# preview image in terminal
+alias icat="kitten icat"
 alias kvim='NVIM_APPNAME="kickstart-nvim" nvim'
 alias vim='nvim'
 alias vi='vim'
