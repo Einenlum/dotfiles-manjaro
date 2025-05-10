@@ -158,6 +158,12 @@ cd rofi && chmod +x setup.sh
 
 echo '@import "~/.config/rofi/colors/gruvbox.rasi"' > launchers/type-1/shared/colors.rasi
 
+cat <<EOF > ~/.config/rofi/launchers/type-1/shared/fonts.rasi
+* {
+    font: "JetBrains Mono Nerd Font 9";
+}
+EOF
+
 # Install poetry
 curl -sSL https://install.python-poetry.org | python3 -
 
