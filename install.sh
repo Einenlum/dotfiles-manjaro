@@ -39,6 +39,7 @@ sudo pamac install --no-confirm \
     php \
     postgresql \
     python-pip \
+    python-pynvim \
     ripgrep \
     rofi \
     ruby \
