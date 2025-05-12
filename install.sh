@@ -22,6 +22,7 @@ sudo pamac install --no-confirm \
     gcc \
     git-delta \
     gnome-terminal \
+    gtk-engine-murrine \
     go \
     gvim \
     highlight \
@@ -162,6 +163,14 @@ cat <<EOF > ~/.config/rofi/launchers/type-1/shared/fonts.rasi
 * {
     font: "JetBrains Mono Nerd Font 9";
 }
+EOF
+
+sudo tee /etc/X11/xorg.conf.d/10-brightness.conf > /dev/null <<EOF
+Section "Device"
+    Identifier  "Intel Graphics" 
+    Driver      "intel"
+    Option      "Backlight"  "intel_backlight"
+EndSection
 EOF
 
 # Install poetry
