@@ -30,6 +30,9 @@ bindsym $mod+Shift+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+b kill
 
+# start xfce settings so that it works with gtk
+exec --no-startup-id xfsettingsd
+
 # start dmenu (a program launcher)
 # bindsym $mod+i exec dmenu_run
 bindsym $mod+i exec "rofi -modi drun -show drun -theme ~/.config/rofi/launchers/type-1/style-10.rasi"
