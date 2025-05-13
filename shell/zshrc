@@ -1,5 +1,12 @@
 # Enable case-insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# General matcher
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} m:{a-z}={A-Z} r:|[._-]=* r:|=*'
+
+# Specifically apply matcher for commands
+zstyle ':completion:*:*:commands' matcher-list 'm:{a-z}={A-Z}'
+
+autoload -Uz compinit
+compinit
 
 # Do not keep in history if leading space
 setopt HIST_IGNORE_SPACE
