@@ -1,7 +1,7 @@
 require('einenlum.neovide')
+require('einenlum.set')
 require('einenlum.lazy')
 require('einenlum.plugins')
-require('einenlum.set')
 require('einenlum.bindings')
 require('einenlum.autocmds')
 require('einenlum.colors')
