@@ -116,7 +116,7 @@ mkdir -p ~/.config/nvim/backup
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
-npm install -g tldr fkill-cli
+npm install -g tldr fkill-cli neovim
 npm install -g eslint-plugin-react eslint@4.x babel-eslint@8
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
