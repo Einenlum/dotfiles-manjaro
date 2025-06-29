@@ -46,6 +46,7 @@ sudo pamac install --no-confirm \
     ripgrep \
     rofi \
     ruby \
+    signal-desktop \
     starship \
     ttf-fira-code \
     ttf-jetbrains-mono \
