@@ -249,3 +249,15 @@ esac
 # pnpm end
 export PATH="/home/einenlum/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/einenlum/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+curl_time() {
+    curl -so /dev/null -w "\
+   namelookup:  %{time_namelookup}s\n\
+      connect:  %{time_connect}s\n\
+   appconnect:  %{time_appconnect}s\n\
+  pretransfer:  %{time_pretransfer}s\n\
+     redirect:  %{time_redirect}s\n\
+starttransfer:  %{time_starttransfer}s\n\
+-------------------------\n\
+        total:  %{time_total}s\n" "$@"
+}
