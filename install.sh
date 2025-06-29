@@ -123,11 +123,7 @@ npm config set prefix '~/.npm-global'
 npm install -g tldr fkill-cli neovim
 npm install -g eslint-plugin-react eslint@4.x babel-eslint@8
 
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-sudo mv composer.phar /usr/local/bin/composer
-sudo chmod +x /usr/local/bin/composer
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux)"
 
 # Set default browser
 dg-mime default firefox.desktop x-scheme-handler/https x-scheme-handler/http
