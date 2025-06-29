@@ -77,12 +77,15 @@ require("lazy").setup({
         --   temperature = 0,
         --   max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
         --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-           provider = "gemini",
-           gemini = {
-            model = "gemini-2.0-flash",
-            temperature = 0,
-            max_tokens = 4096,
-        },
+            providers = {
+              openrouter = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'deepseek/deepseek-chat-v3-0324:free',
+              },
+            },
+           provider = "openrouter",
       },
       -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
       build = "make",
