@@ -183,5 +183,8 @@ curl -sSL https://install.python-poetry.org | python3 -
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Install MailHog
+go install github.com/mailhog/MailHog@latest
+
 # Add Natural Scrolling in libinput conf
 sudo sed -i '/Identifier "libinput touchpad catchall"/a \ \ \ \ \ \ \ \ Option "NaturalScrolling" "True"' /usr/share/X11/xorg.conf.d/40-libinput.conf
