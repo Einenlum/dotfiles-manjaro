@@ -174,6 +174,9 @@ Section "Device"
 EndSection
 EOF
 
+# Install mise
+curl https://mise.run | sh
+
 # Install poetry
 curl -sSL https://install.python-poetry.org | python3 -
 
