@@ -38,6 +38,7 @@ sudo pamac install --no-confirm \
     npm \
     p7zip \
     pcmanfm \
+    peek \
     php \
     postgresql \
     python-pip \
