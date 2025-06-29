@@ -58,7 +58,6 @@ require("lazy").setup({
     { 'jparise/vim-graphql' }, -- Syntax highlighting in graphql
 
     -- Autocompletion
-    { 'github/copilot.vim' }, -- Test github copilot
     { 'nvim-lua/plenary.nvim' },
     { 'j-hui/fidget.nvim',                   tag = 'legacy' },
 
@@ -99,7 +98,23 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
         "ibhagwan/fzf-lua", -- for file_selector provider fzf
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua", -- for providers='copilot'
+        {
+          "zbirenbaum/copilot.lua",
+          event = "InsertEnter",
+          opts = {
+            suggestion = {
+              enabled = true,
+              auto_trigger = true,
+              keymap = {
+                accept = "<C-s>",
+                next = "<M-]>",
+                prev = "<M-[>",
+                dismiss = "<C-]>",
+              },
+            },
+            panel = { enabled = false },
+          },
+        },
         {
           -- support for image pasting
           "HakonHarnes/img-clip.nvim",

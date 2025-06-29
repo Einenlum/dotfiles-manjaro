@@ -177,13 +177,3 @@ noremap gm :GitBlameToggle<CR>
 
 " illuminate
 " ----------
-
-" Copilot
-" -------------
-
-" Replace Tab with Ctrl + s (to avoid conflicts with Vim's Tab and phpactor)
-imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-let g:copilot_filetypes = {
-    \   'sh': v:false,
-    \ }
