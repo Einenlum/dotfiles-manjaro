@@ -9,6 +9,9 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.laststatus=2
 vim.opt.backupdir = os.getenv("HOME") .. "/.config/nvim/backup"
+-- this fixes this issue with bun watch
+-- https://github.com/oven-sh/bun/issues/8520
+vim.opt.backupcopy = "yes"
 vim.opt.wrap = true
 vim.opt.scrolloff=5
 vim.opt.title = true
