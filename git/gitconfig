@@ -74,7 +74,7 @@
     file-decoration-style = none
     # syntax-theme = default
 [merge]
-	tool = meld
+	tool = kdiff3
 [mergetool]
 	keepBackup = false
 [credential]
