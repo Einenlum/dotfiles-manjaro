@@ -240,5 +240,12 @@ bindkey "^[[3~" delete-char
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# pnpm
+export PNPM_HOME="/home/einenlum/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 export PATH="/home/einenlum/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/einenlum/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
