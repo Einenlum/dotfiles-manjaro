@@ -149,6 +149,16 @@ require("lazy").setup({
     { 'williamboman/mason-lspconfig.nvim' },
     { 'jay-babu/mason-null-ls.nvim' },   -- plug mason with null ls
     { 'jose-elias-alvarez/null-ls.nvim' }, -- Add formatting support
+    {
+      "OlegGulevskyy/better-ts-errors.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
+      opts = {
+        keymaps = {
+          toggle = '<leader>md', -- default '<leader>dd'
+          go_to_definition = '<leader>mt' -- default '<leader>dx'
+        }
+      }
+    },
 
     -- Autocompletion Plugins
     { 'hrsh7th/nvim-cmp' },
