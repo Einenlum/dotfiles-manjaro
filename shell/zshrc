@@ -233,10 +233,6 @@ bindkey "^[[1;5C" forward-word  # Ctrl + Right Arrow
 bindkey "^[[1;5D" backward-word  # Ctrl + Left Arrow
 bindkey "^[[3~" delete-char
 
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/home/einenlum/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/einenlum/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
