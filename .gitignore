@@ -2,5 +2,6 @@ vim/vimconf/bundle
 vim/vimconf/plugged
 vim/vimconf/swap
 vim/vimconf/.netrwhist
+vim/lazy-lock.json
 node_modules
 package-lock.json
