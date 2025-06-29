@@ -177,12 +177,6 @@ EOF
 # Install mise
 curl https://mise.run | sh
 
-# Install poetry
-curl -sSL https://install.python-poetry.org | python3 -
-
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
 # Install MailHog
 go install github.com/mailhog/MailHog@latest
 
