@@ -122,7 +122,7 @@ mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
 npm install -g tldr fkill-cli neovim
-npm install -g eslint-plugin-react eslint@4.x babel-eslint@8
+npm install -g eslint-plugin-react eslint@4.x babel-eslint@8 @vue/language-server @vue/typescript-plugin
 
 /bin/bash -c "$(curl -fsSL https://php.new/install/linux)"
 
