@@ -29,6 +29,7 @@ sudo pamac install --no-confirm \
     i3-gaps \
     i3status \
     jq \
+    luarocks \
     kdiff3 \
     kitty \
     meld \
