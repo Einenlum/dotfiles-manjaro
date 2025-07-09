@@ -1,11 +1,7 @@
-local lsp = require("lsp-zero")
-
 local lsp_attach = function(client, bufnr)
 	local opts = { buffer = bufnr }
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
-	--   lsp.default_keymaps({buffer = bufnr})
 
+	-- LSP keymaps
 	vim.keymap.set("n", "<leader>gt", function()
 		vim.lsp.buf.definition()
 	end, opts)
@@ -19,7 +15,6 @@ local lsp_attach = function(client, bufnr)
 		vim.lsp.buf.code_action()
 	end, opts)
 	vim.keymap.set("v", "<leader>cb", "<leader>cc5<CR>", opts)
-	-- vim.keymap.set('n', '<leader>cca', function() vim.lsp.buf.code_action() end, opts)
 	vim.keymap.set("n", "<leader>rf", function()
 		vim.lsp.buf.references()
 	end, opts)
@@ -37,17 +32,20 @@ local lsp_attach = function(client, bufnr)
 	end, opts)
 end
 
--- lsp.extend_lspconfig({
---   capabilities = require('cmp_nvim_lsp').default_capabilities(),
---   lsp_attach = lsp_attach,
---   float_border = 'rounded',
---   sign_text = {
---     error = '✘',
---     warn = '▲',
---     hint = '⚑',
---     info = ''
---   },
--- })
+-- Configure diagnostic signs
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "✘",
+			[vim.diagnostic.severity.WARN] = "▲",
+			[vim.diagnostic.severity.HINT] = "⚑",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+	},
+	float = {
+		border = "rounded",
+	},
+})
 
 -- Custom handler for 'textDocument/definition'
 -- The problem is that when I jump on a PHP class definition,
@@ -84,16 +82,25 @@ local function goto_definition(_, result, ctx, _)
 	end
 end
 
+-- Get default capabilities and merge with cmp capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name)
-			require("lspconfig")[server_name].setup({})
+			require("lspconfig")[server_name].setup({
+				capabilities = capabilities,
+				on_attach = lsp_attach,
+			})
 		end,
-		-- By default tailwincss is enabled on php files. We explicitely
+		-- By default tailwindcss is enabled on php files. We explicitly
 		-- set the filetypes it should be enabled on.
 		["tailwindcss"] = function()
 			require("lspconfig").tailwindcss.setup({
+				capabilities = capabilities,
+				on_attach = lsp_attach,
 				filetypes = {
 					"html",
 					"blade",
@@ -111,6 +118,8 @@ require("mason-lspconfig").setup({
 		-- the 'vim' global variable being not defined
 		["lua_ls"] = function()
 			require("lspconfig").lua_ls.setup({
+				capabilities = capabilities,
+				on_attach = lsp_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -122,6 +131,8 @@ require("mason-lspconfig").setup({
 		end,
 		["intelephense"] = function()
 			require("lspconfig").intelephense.setup({
+				capabilities = capabilities,
+				on_attach = lsp_attach,
 				handlers = {
 					["textDocument/definition"] = goto_definition,
 				},
@@ -130,21 +141,13 @@ require("mason-lspconfig").setup({
 	},
 })
 
--- lspconfig = require('lspconfig')
+-- Setup typescript-tools
+require("typescript-tools").setup({
+	capabilities = capabilities,
+	on_attach = lsp_attach,
+})
 
--- -- Setup vue language server
--- -- Found here: https://www.reddit.com/r/neovim/comments/1g4e3sa/finally_neovim_native_vue_lsp_perfection_2024/
--- lspconfig.ts_ls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     plugins = { -- I think this was my breakthrough that made it work
---       {
---         name = "@vue/typescript-plugin",
---         location = "/home/einenlum/.npm-global/lib/node_modules/@vue/language-server",
---         languages = { "vue" },
---       },
---     },
---   },
---   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
--- }
+-- Optional: Configure LSP handlers globally
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })

@@ -195,7 +195,6 @@ require("lazy").setup({
 
 	-- Snippets
 	{ "L3MON4D3/LuaSnip" },
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 
 	-- Diagnostics
 	{ "folke/trouble.nvim" },
