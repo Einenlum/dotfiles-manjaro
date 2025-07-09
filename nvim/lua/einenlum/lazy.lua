@@ -262,7 +262,4 @@ require("lazy").setup({
 
 	-- File manipulation
 	{ "vim-scripts/Rename" }, -- Rename the file in buffer
-
-	-- Games
-	{ "ThePrimeagen/vim-be-good" }, -- Practice vim skills
 })
