@@ -36,8 +36,6 @@ vim.opt.foldlevel = 99
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
-vim.notify = true -- Enable notifications
-
 --Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
