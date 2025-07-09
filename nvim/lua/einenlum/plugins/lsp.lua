@@ -104,21 +104,21 @@ require('mason-lspconfig').setup({
   },
 })
 
-lspconfig = require('lspconfig')
+-- lspconfig = require('lspconfig')
 
--- Setup vue language server
--- Found here: https://www.reddit.com/r/neovim/comments/1g4e3sa/finally_neovim_native_vue_lsp_perfection_2024/
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    plugins = { -- I think this was my breakthrough that made it work
-      {
-        name = "@vue/typescript-plugin",
-        location = "/home/einenlum/.npm-global/lib/node_modules/@vue/language-server",
-        languages = { "vue" },
-      },
-    },
-  },
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-}
+-- -- Setup vue language server
+-- -- Found here: https://www.reddit.com/r/neovim/comments/1g4e3sa/finally_neovim_native_vue_lsp_perfection_2024/
+-- lspconfig.ts_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   init_options = {
+--     plugins = { -- I think this was my breakthrough that made it work
+--       {
+--         name = "@vue/typescript-plugin",
+--         location = "/home/einenlum/.npm-global/lib/node_modules/@vue/language-server",
+--         languages = { "vue" },
+--       },
+--     },
+--   },
+--   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+-- }
