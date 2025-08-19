@@ -94,60 +94,60 @@ export EDITOR='nvim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-alias tmux="tmux -u2"
+alias art="./artisan"
+alias bat='bat --paging=never --style=plain,numbers'
+alias baum='tree -aL 1'
+alias c="composer"
+alias cd="z"
+alias dca="docker-compose start"
+alias dcb="docker-compose build"
+alias dcc="docker-compose"
+alias dcd="docker-compose down"
+alias dce="docker-compose exec"
+alias dcl="docker-compose logs"
+alias dco="docker-compose stop"
+alias dcr="docker-compose run --rm"
+alias dcu="docker-compose up -d"
+alias de="deactivate"
+alias dja='DJANGO_SETTINGS_MODULE=project.settings.development python src/manage.py'
+alias dog='highlight -O ansi'
+alias fly="LOG_LEVEL=no flyctl"
+alias g="git"
+alias ga="git add --all"
+alias gc="git commit -m"
+alias gcam="git commit --amend --no-edit"
+alias git='LANG=en_US git'
+alias gp="git push"
+alias gpf="git push --force-with-lease"
+alias gpm="git push --mirror"
+alias gpr="git pull --rebase"
+alias gw="git add -A && git commit -m \"[ci skip] WIP\""
+# preview image in terminal
+alias icat="kitten icat"
+alias kl="kubectl"
+alias kvim='NVIM_APPNAME="kickstart-nvim" nvim'
+alias ll="exa"
+alias ls="exa"
+alias pm='python ./manage.py'
+alias po="poetry"
+alias pos="poetry shell"
+alias py="python"
+alias s="sail"
+alias sa="sail artisan"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias sc="sail composer"
 alias sf="symfony"
 alias sfc="symfony console"
 alias sfcc="php app/console cache:clear"
 alias sfr="php app/console server:run"
-alias git='LANG=en_US git'
-alias g="git"
-alias gpf="git push --force-with-lease"
-alias gp="git push"
-alias gpm="git push --mirror"
-alias gpr="git pull --rebase"
-alias ga="git add --all"
-alias gc="git commit -m"
-alias gw="git add -A && git commit -m \"[ci skip] WIP\""
-alias gcam="git commit --amend --no-edit"
-alias dcc="docker-compose"
-alias dcu="docker-compose up -d"
-alias dcr="docker-compose run --rm"
-alias dcd="docker-compose down"
-alias dco="docker-compose stop"
-alias dca="docker-compose start"
-alias dcb="docker-compose build"
-alias dce="docker-compose exec"
-alias dcl="docker-compose logs"
-alias dog='highlight -O ansi'
-alias bat='bat --paging=never --style=plain,numbers'
-# preview image in terminal
-alias icat="kitten icat"
-alias kvim='NVIM_APPNAME="kickstart-nvim" nvim'
-alias vim='nvim'
-alias vi='vim'
-alias baum='tree -aL 1'
-alias srg="rg -j1"
-alias kl="kubectl"
-alias pos="poetry shell"
-alias po="poetry"
-alias c="composer"
-alias dja='DJANGO_SETTINGS_MODULE=project.settings.development python src/manage.py'
-alias pm='python ./manage.py'
-alias py="python"
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-alias art="./artisan"
-alias sa="sail artisan"
-alias sc="sail composer"
-alias s="sail"
 alias so="source ./.venv/bin/activate"
-alias ve="python -m venv .venv && so"
+alias srg="rg -j1"
+alias tmux="tmux -u2"
 alias urd="uv run django-admin"
 alias urm="uv run manage.py"
-alias de="deactivate"
-alias fly="LOG_LEVEL=no flyctl"
-alias cd="z"
-alias ls="exa"
-alias ll="exa"
+alias ve="python -m venv .venv && so"
+alias vi='vim'
+alias vim='nvim'
 
 # -i asks for confirmation if it overrides a file
 # -v recaps what you've done
