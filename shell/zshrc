@@ -98,6 +98,7 @@ alias art="./artisan"
 alias bat='bat --paging=never --style=plain,numbers'
 alias baum='tree -aL 1'
 alias c="composer"
+alias cc="claude"
 alias cd="z"
 alias dca="docker-compose start"
 alias dcb="docker-compose build"
