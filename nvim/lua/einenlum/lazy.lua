@@ -180,7 +180,6 @@ require("lazy").setup({
 	{ "luochen1990/rainbow" }, -- Colors brackets according to levels
 	{ "mechatroner/rainbow_csv" }, -- Syntax highlighting + sql queries on CSV
 	{ "phaazon/hop.nvim" }, -- Easy motions 1
-	{ "ggandor/lightspeed.nvim" }, -- Easy motions 2
 	{ "ggandor/leap.nvim" },
 	{ "RRethy/vim-illuminate" }, -- highlight keywords and values when staying on them
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }, -- TSUpdate updates all the parsers
